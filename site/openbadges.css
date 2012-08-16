@@ -1,0 +1,33 @@
+.mzd_marquee,fieldset{
+	border:1px solid #ff9900;
+    background-color:#ffffff;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    line-height:1.2em;
+    margin:4px;
+    padding:4px;
+    color:#000000;
+}
+
+
+.mzd_petit {
+	font-size:0.8em;
+}
+
+
+div.mzd_centrer {
+	text-align:center;
+}
+
+.legend {
+	font-size:1.2em;
+}
+
+.backPackLink {
+	color: #FF0099;
+	text-decoration: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+	

@@ -1,0 +1,77 @@
+.ob_tick1{
+	list-style-type: none;
+ 	background-image: url(yes.png);
+	background-repeat: no-repeat;
+ 	background-position: 0 0.32em;
+ 	padding-left: 20px;
+ 	line-height:20px;
+}
+
+.ob_tick0 {
+	list-style-type: none;
+ 	background-image: url(no.png);
+	background-repeat: no-repeat;
+ 	background-position: 0 0.32em;
+ 	padding-left: 20px;
+ 	line-height:20px;
+	}
+
+
+.ob_petit {
+	font-size:0.8em;
+}
+
+
+div.ob_centrer {
+	text-align:center;
+}
+
+.legend {
+	font-size:1.2em;
+}
+
+.backPackLink {
+	color: #FF0099;
+	text-decoration: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.ob_congratulations {
+	font-size:1.8em;
+	font-weight: bold;
+	text-align:center;
+	
+}
+
+.ob_button {
+	border:1px solid #ff9900;
+    background-color:#ffffff;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    text-align:center;
+    width:30%;
+    margin:auto;
+    font-size:1.4em;
+    text-decoration: none;
+}
+.ob_button:hover {
+	border:1px solid #ff9900;
+    background-color:#ffffcc;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    text-align:center;
+    width:30%;
+    margin:auto;
+    font-size:1.4em;
+    text-decoration: none;
+}
+
+.ob_button a:hover {
+	text-decoration: none;
+}
+	
+	
+	
