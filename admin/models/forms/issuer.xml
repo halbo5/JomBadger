@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addrulepath="/administrator/components/com_openbadges/models/rules"
+	>
+	<fieldset>
+		<field
+			name="id_validated"
+			type="hidden"
+		/>
+		
+		<field
+			name="usermail"
+			type="text"
+			class="inputbox validate-email"
+			default=""
+			label="COM_OPENBADGES_ISSUER_USEREMAIL"
+			description="COM_OPENBADGES_ISSUER_USEREMAIL_DESC"
+			required="true"
+			validate="email"
+		/>
+		
+		<field
+			name="badgeid"
+			type="sql"
+			query="SELECT id_badge as value,name as badgeid FROM #__ob_badges"
+			label="COM_OPENBADGES_ISSUER_BADGE"
+			description="COM_OPENBADGES_ISSUER_BADGE_DESC"
+			default="0"
+			required="true">
+			<option value="0">COM_OPENBADGES_ISSUER_SELECTBADGE</option>
+		</field>
+	</fieldset>
+</form>
+

@@ -19,6 +19,8 @@ abstract class OpenBadgesHelper
 	{
 		JSubMenuHelper::addEntry(JText::_('COM_OPENBADGES_SUBMENU_BADGES'),
 		                         'index.php?option=com_openbadges', $submenu == 'badges');
+		JSubMenuHelper::addEntry(JText::_('COM_OPENBADGES_SUBMENU_ISSUER'),
+		                         'index.php?option=com_openbadges&view=issuer', $submenu == 'issuer');
 		JSubMenuHelper::addEntry(JText::_('COM_OPENBADGES_SUBMENU_CATEGORIES'),
 		                         'index.php?option=com_categories&view=categories&extension=com_openbadges',
 		                         $submenu == 'categories');
