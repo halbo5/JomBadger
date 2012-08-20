@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -14,10 +14,10 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.modeladmin' );
 
 
-class openbadgesModelissuer extends JModelAdmin
+class JomBadgerModelissuer extends JModelAdmin
 {
 
-public function getTable($type = 'ob_validated', $prefix = 'Table', $config = array()) 
+public function getTable($type = 'jb_validated', $prefix = 'Table', $config = array()) 
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -31,7 +31,7 @@ public function getTable($type = 'ob_validated', $prefix = 'Table', $config = ar
 public function getForm($data = array(), $loadData = false) 
 	{
 		// Get the form.
-		$form = $this->loadForm('com_openbadges.issuer', 'issuer',
+		$form = $this->loadForm('com_jombadger.issuer', 'issuer',
 		                        array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form)) 
 		{
@@ -46,7 +46,7 @@ public function getForm($data = array(), $loadData = false)
 */
 public function getScript() 
 	{
-		return 'administrator/components/com_openbadges/models/forms/openbadges.js';
+		return 'administrator/components/com_jombadger/models/forms/openbadges.js';
 	}
 	
 	
@@ -54,7 +54,7 @@ protected function loadFormData()
 	{
 		//Pas sur que ce soit utile ...
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_openbadges.default.issuer.data', array());
+		$data = JFactory::getApplication()->getUserState('com_jombadger.default.issuer.data', array());
 		if (empty($data)) 
 		{
 			$data = $this->getItem();

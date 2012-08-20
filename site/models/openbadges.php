@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -15,7 +15,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.model' );
 
 
-class openbadgesModelopenbadges extends JModel
+class JomBadgerModelopenbadges extends JModel
 {
 	
 	
@@ -30,8 +30,8 @@ function getBadges()
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('id_badge,#__ob_badges.name as name, #__ob_badges.image as image, #__ob_badges.description as description, criteria_url,expires, catid');
-		$query->from('#__ob_badges');
+		$query->select('id_badge,#__jb_badges.name as name, #__jb_badges.image as image, #__jb_badges.description as description, criteria_url,expires, catid');
+		$query->from('#__jb_badges');
 		$query->leftjoin('#__categories on catid=#__categories.id');
 		$query->order('name');
 		$db->setQuery((string)$query);
@@ -45,7 +45,7 @@ function getCategories()
 		$query = $db->getQuery(true);
 		$query->select('id,title,description');
 		$query->from('#__categories');
-		$query->where('extension=\'com_openbadges\'');
+		$query->where('extension=\'com_jombadger\'');
 		$query->order('title');
 		$db->setQuery((string)$query);
 		$categories = $db->loadObjectList();

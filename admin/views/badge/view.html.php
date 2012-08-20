@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -15,7 +15,7 @@ jimport( 'joomla.application.component.view');
 
 
 
-class openbadgesViewbadge extends JView
+class JomBadgerViewbadge extends JView
 {
 	
 	protected $form;
@@ -37,7 +37,7 @@ class openbadgesViewbadge extends JView
     $this->script = $script;
     
     // What Access Rights does this user have? What can (s)he do?
-	$this->canDo = OpenBadgesHelper::getActions($this->item->id_badge);
+	$this->canDo = JomBadgerHelper::getActions($this->item->id_badge);
     
     $this->addToolBar();
  
@@ -57,8 +57,8 @@ protected function addToolBar()
 	$userId = $user->id;
 	$isNew = ($this->item->id_badge == 0);
 	
-    JToolBarHelper::title($isNew ?   JText::_( 'COM_OPENBADGES_TITLE_BADGE_NEW' )
-    							:JText::_( 'COM_OPENBADGES_TITLE_BADGE_EDIT'),'openbadges');
+    JToolBarHelper::title($isNew ?   JText::_( 'COM_JOMBADGER_TITLE_BADGE_NEW' )
+    							:JText::_( 'COM_JOMBADGER_TITLE_BADGE_EDIT'),'jombadger');
     if ($isNew)
     {
     	//for new records, check the create permission
@@ -90,12 +90,12 @@ protected function setDocument()
 	{
 		$isNew = ($this->item->id_badge < 1);
 		$document = JFactory::getDocument();
-		$document->setTitle($isNew ? JText::_('COM_OPENBADGES_BADGE_CREATING')
-		                           : JText::_('COM_OPENBADGES_BADGE_EDITING'));
+		$document->setTitle($isNew ? JText::_('COM_JOMBADGER_BADGE_CREATING')
+		                           : JText::_('COM_JOMBADGER_BADGE_EDITING'));
 		$document->addScript(JURI::root() . $this->script);
-		$document->addScript(JURI::root() . "/administrator/components/com_openbadges"
+		$document->addScript(JURI::root() . "/administrator/components/com_jombadger"
 		                                  . "/views/badge/submitbutton.js");
-		JText::script('COM_OPENBADGES_BADGE_ERROR_UNACCEPTABLE');                          
+		JText::script('COM_JOMBADGER_BADGE_ERROR_UNACCEPTABLE');                          
 	}
 
 

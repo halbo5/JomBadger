@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.plugin.plugin');
 
-class OpenBadgesHelper 
+class JomBadgerHelper 
 {
 
 /**
@@ -25,7 +25,7 @@ class OpenBadgesHelper
 function validate($usermail,$badgeid)
 	{
 	$db	   =& JFactory::getDBO();
-	$query = "SELECT * FROM #__ob_validated WHERE usermail='$usermail' AND badgeid='$badgeid'";
+	$query = "SELECT * FROM #__jb_validated WHERE usermail='$usermail' AND badgeid='$badgeid'";
 	$db->setQuery($query);
 	$result=$db->query();
 	$nbrows=$db->getNumRows();
@@ -35,7 +35,7 @@ function validate($usermail,$badgeid)
 		$validated="2";
 		return $validated;
 		}
-	$query = "INSERT INTO #__ob_validated (id_validated,usermail,badgeid) VALUES ('','$usermail','$badgeid')";
+	$query = "INSERT INTO #__jb_validated (id_validated,usermail,badgeid) VALUES ('','$usermail','$badgeid')";
 	$db->setQuery($query);
 	$result2=$db->query();
 	if ($result2)

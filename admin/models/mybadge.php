@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.modeladmin' );
 
 
-class openbadgesModelmybadge extends JModelAdmin
+class JomBadgerModelmybadge extends JModelAdmin
 {
 	
 public function testBadge($params) 
@@ -30,7 +30,7 @@ public function testBadge($params)
 		$query = $db->getQuery(true);
 		$query->select('id');
 		$query->from('#__categories');
-		$query->where('extension=\'com_openbadges\'');
+		$query->where('extension=\'com_jombadger\'');
 		$db->setQuery((string)$query);
 		$db->query();
 		$rows = $db->getNumRows();
@@ -39,7 +39,7 @@ public function testBadge($params)
 		//test if two badges created
 		$query = $db->getQuery(true);
 		$query->select('id_badge');
-		$query->from('#__ob_badges');
+		$query->from('#__jb_badges');
 		$db->setQuery((string)$query);
 		$db->query();
 		$rowsbadges = $db->getNumRows();
@@ -48,7 +48,7 @@ public function testBadge($params)
 		//test if 1 badge issued
 		$query = $db->getQuery(true);
 		$query->select('id_record');
-		$query->from('#__ob_records');
+		$query->from('#__jb_records');
 		$db->setQuery((string)$query);
 		$db->query();
 		$rowsrecords = $db->getNumRows();
@@ -84,7 +84,7 @@ protected function sendEarner()
 		$user	= JFactory::getUser();
 		$earneremail = $user->email;
 		$earneremail=urlencode($earneremail);
-    	$url="http://www.bolli.fr/api/ob_installed.php?earneremail=$earneremail";
+    	$url="http://www.bolli.fr/api/jb_installed.php?earneremail=$earneremail";
     	$send=file_get_contents($url);
     	return $send;
 	}
@@ -100,7 +100,7 @@ function getUserId()
 public function getForm($data = array(), $loadData = true) 
 	{
 		/* Get the form.
-		$form = $this->loadForm('com_openbadges.badge', 'badge',
+		$form = $this->loadForm('com_jombadger.badge', 'badge',
 		                        array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form)) 
 		{

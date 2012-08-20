@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -11,19 +11,19 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // Access check: is this user allowed to access the backend of this component?
-if (!JFactory::getUser()->authorise('core.manage', 'com_openbadges')) 
+if (!JFactory::getUser()->authorise('core.manage', 'com_jombadger')) 
 {
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
 // require helper file
-JLoader::register('OpenBadgesHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'openbadges.php');
+JLoader::register('JomBadgerHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'openbadges.php');
 
 // import joomla controller library
 jimport('joomla.application.component.controller');
  
-// Get an instance of the controller prefixed by openbadges
-$controller = JController::getInstance('openbadges');
+// Get an instance of the controller prefixed by JomBadger
+$controller = JController::getInstance('JomBadger');
  
 // Perform the Request task
 $input = JFactory::getApplication()->input;

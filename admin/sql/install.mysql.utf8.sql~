@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `#__jb_badges` (
   `description` varchar(128) NOT NULL,
   `criteria_url` varchar(255) NOT NULL,
   `expires` DATE NOT NULL,
+  `catid` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_badge`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

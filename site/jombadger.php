@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport('joomla.application.component.controller');
 
 // Get an instance of the controller prefixed by openbadges
-$controller = JController::getInstance('openbadges');
+$controller = JController::getInstance('JomBadger');
 
 // Perform the Request task
 $input = JFactory::getApplication()->input;

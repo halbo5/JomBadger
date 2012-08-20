@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -24,12 +24,12 @@ defined('_JEXEC') or die('Restricted access');
 		$criteria_url=$row->criteria_url;
 		$expires=($row->expires=="0000-00-00")?"":$row->expires;
 		$checked=JHTML::_('grid.id,',$i,$row->id_badge);
-		$link = JRoute::_( 'index.php?option=com_openbadges&task=badge.edit&id_badge='. $row->id_badge );
+		$link = JRoute::_( 'index.php?option=com_jombadger&task=badge.edit&id_badge='. $row->id_badge );
 			
 		echo "<tr class=\"row$k\"><td>$checked</td><td>".$row->id_badge."</td>";
 		echo "<td><img src='".$row->image."' alt='".$row->name."' title='".$row->name."' height='90' width='90' /></td>";
 		echo "<td><a href=\"".$link."\">".$row->name."</td><td>".$row->catname."</td><td>".$description."</td>";
-		echo "<td><a href='".$criteria_url."'>".JTEXT::_("COM_OPENBADGES_BADGECRITERIAURLGO")."</a></td><td>$expires</td></tr>";
+		echo "<td><a href='".$criteria_url."'>".JTEXT::_("COM_JOMBADGER_BADGECRITERIAURLGO")."</a></td><td>$expires</td></tr>";
 		$k=1-$k;	
 	}
 ?>

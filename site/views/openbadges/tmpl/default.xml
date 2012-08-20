@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-        <layout title="COM_OPENBADGES_AFFICHAGE_BADGES">
-                <message>COM_OPENBADGES_AFFICHAGE_BADGES_DESC</message>
+        <layout title="COM_JOMBADGER_AFFICHAGE_BADGES">
+                <message>COM_JOMBADGER_AFFICHAGE_BADGES_DESC</message>
         </layout>
 </metadata>

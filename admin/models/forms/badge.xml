@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-	addrulepath="/administrator/components/com_openbadges/models/rules"
+	addrulepath="/administrator/components/com_jombadger/models/rules"
 	>
 	<fieldset>
 		<field
@@ -11,11 +11,11 @@
 		<field
 			name="catid"
 			type="category"
-			extension="com_openbadges"
+			extension="com_jombadger"
 			class="inputbox"
 			default=""
-			label="COM_OPENBADGES_BADGE_FIELD_CATID_LABEL"
-			description="COM_OPENBADGES_BADGE_FIELD_CATID_DESC"
+			label="COM_JOMBADGER_BADGE_FIELD_CATID_LABEL"
+			description="COM_JOMBADGER_BADGE_FIELD_CATID_DESC"
 			required="true"
 		>
 			<option value="0">JOPTION_SELECT_CATEGORY</option>
@@ -24,8 +24,8 @@
 		<field
 			name="name"
 			type="text"
-			label="COM_OPENBADGES_BADGENAME"
-			description="COM_OPENBADGES_BADGENAME_DESC"
+			label="COM_JOMBADGER_BADGENAME"
+			description="COM_JOMBADGER_BADGENAME_DESC"
 			size="40"
 			class="inputbox validate-charsmax"
 			validate="charsmax"
@@ -37,8 +37,8 @@
 			name="image"
 			type="url"
 			filter="url"
-			label="COM_OPENBADGES_BADGEIMAGE"
-			description="COM_OPENBADGES_BADGEIMAGE_DESC"
+			label="COM_JOMBADGER_BADGEIMAGE"
+			description="COM_JOMBADGER_BADGEIMAGE_DESC"
 			size="40"
 			class="inputbox"
 			default="http://"
@@ -47,8 +47,8 @@
 		<field
 			name="description"
 			type="textarea"
-			label="COM_OPENBADGES_BADGEDESCRIPTION"
-			description="COM_OPENBADGES_BADGEDESCRIPTION_DESC"
+			label="COM_JOMBADGER_BADGEDESCRIPTION"
+			description="COM_JOMBADGER_BADGEDESCRIPTION_DESC"
 			cols="5"
 			rows="2"
 			default=""
@@ -60,8 +60,8 @@
 			name="criteria_url"
 			type="url"
 			filter="url"
-			label="COM_OPENBADGES_BADGECRITERIAURL"
-			description="COM_OPENBADGES_BADGECRITERIAURL_DESC"
+			label="COM_JOMBADGER_BADGECRITERIAURL"
+			description="COM_JOMBADGER_BADGECRITERIAURL_DESC"
 			size="40"
 			class="inputbox"
 			default="http://"
@@ -70,8 +70,8 @@
 		<field
 			name="expires"
 			type="calendar"
-			label="COM_OPENBADGES_BADGEEXPIRES"
-			description="COM_OPENBADGES_BADGEEXPIRES_DESC"
+			label="COM_JOMBADGER_BADGEEXPIRES"
+			description="COM_JOMBADGER_BADGEEXPIRES_DESC"
 			size="40"
 			format="%Y-%m-%d"
 			default=""

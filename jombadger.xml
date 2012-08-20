@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5" method="upgrade">
-	<name>COM_OPENBADGES</name>
+	<name>COM_JOMBADGER</name>
 	<author>Alain Bolli</author>
-	<creationDate>14 aout 2012</creationDate>
+	<creationDate>20 aout 2012</creationDate>
 	<copyright>Copyright (C) 2012 Alain Bolli. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>alain.bolli@gmail.com</authorEmail>
 	<authorUrl>http://www.bolli.fr</authorUrl>
-	<version>0.4</version>
-	<description>COM_OPENBADGES_DESCRIPTION</description>
+	<version>0.6</version>
+	<description>COM_JOMBADGER_DESCRIPTION</description>
 	<update>
 		<schemas>
 			<schemapath type="mysql">sql/updates/mysql</schemapath>
@@ -29,26 +29,26 @@
 		<folder>views</folder>
 		<folder>language</folder>
 		<filename>controller.php</filename>
-		<filename>openbadges.php</filename>
+		<filename>jombadger.php</filename>
 		<filename>openbadges.css</filename>
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
 	</files>
-	<media destination="com_openbadges" folder="media">
+	<media destination="com_jombadger" folder="media">
 		<filename>index.html</filename>
 		<folder>images</folder>
 	</media>
 	<administration>
-	  <menu link="option=com_openbadges" img="../media/com_openbadges/images/icon16.png">COM_OPENBADGES_MENU</menu>
+	  <menu link="option=com_jombadger" img="../media/com_jombadger/images/icon16.png">COM_JOMBADGER_MENU</menu>
 	  <languages folder="admin">
-		<language tag="en-GB">language/en-GB/en-GB.com_openbadges.sys.ini</language>
-		<language tag="fr-FR">language/fr-FR/fr-FR.com_openbadges.sys.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.com_jombadger.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.com_jombadger.sys.ini</language>
 	  </languages>
 	  <files folder="admin">
 		<filename>config.xml</filename>
 		<filename>access.xml</filename>
 		<filename>controller.php</filename>
-		<filename>openbadges.php</filename>
+		<filename>jombadger.php</filename>
 		<filename>index.html</filename>
 		<filename>openbadges.css</filename>
 		<filename>yes.png</filename>
@@ -65,6 +65,6 @@
 	</administration>
 	<!-- UPDATESERVER DEFINITION -->
         <updateservers>
-                <server type="extension" priority="1" name="OpenBadges">http://www.bolli.fr/update/openbadges-update.xml</server>
+                <server type="extension" priority="1" name="JomBadger">http://www.bolli.fr/update/jombadger-update.xml</server>
         </updateservers>
 </extension>

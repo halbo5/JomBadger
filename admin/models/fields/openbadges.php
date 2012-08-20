@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -14,9 +14,9 @@ jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
  
 /**
- * OpenBadges Form Field class for the OpenBadges component
+ * JomBadger Form Field class for the JomBadger component
  */
-class JFormFieldOpenBadges extends JFormFieldList
+class JFormFieldJomBadger extends JFormFieldList
 {
 	/**
 	 * The field type.
@@ -34,8 +34,8 @@ class JFormFieldOpenBadges extends JFormFieldList
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('id_badge,#__ob_badges.name as name,#__categories.title as category,catid');
-		$query->from('#__ob_badges');
+		$query->select('id_badge,#__jb_badges.name as name,#__categories.title as category,catid');
+		$query->from('#__jb_badges');
 		$query->leftJoin('#__categories on catid=#__categories.id');
 		$db->setQuery((string)$query);
 		$badges = $db->loadObjectList();

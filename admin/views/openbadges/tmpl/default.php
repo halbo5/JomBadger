@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -24,10 +24,10 @@ $userid=$this->userid;
 		}
 ?>
 <?php 		
-echo "<br /><h1>".JTEXT::_("COM_OPENBADGES_LIST_BADGES")."</h1>";
-echo "<p>".JTEXT::_("COM_OPENBADGES_TEXT_BEFORE_TABLE")."</p>";
+echo "<br /><h1>".JTEXT::_("COM_JOMBADGER_LIST_BADGES")."</h1>";
+echo "<p>".JTEXT::_("COM_JOMBADGER_TEXT_BEFORE_TABLE")."</p>";
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_openbadges'); ?>" method="post" name="adminForm" id=adminForm>
+<form action="<?php echo JRoute::_('index.php?option=com_jombadger'); ?>" method="post" name="adminForm" id=adminForm>
 <fieldset id="filter-bar">
 <div class="filter-search fltlft">
 	<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>

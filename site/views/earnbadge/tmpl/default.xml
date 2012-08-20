@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-        <layout title="COM_OPENBADGES_EARNBADGE">
-                <message>COM_OPENBADGES_EARNBADGE_DESC</message>
+        <layout title="COM_JOMBADGER_EARNBADGE">
+                <message>COM_JOMBADGER_EARNBADGE_DESC</message>
         </layout>
         <fields name="request"
-        		addfieldpath="/administrator/components/com_openbadges/models/fields"
+        		addfieldpath="/administrator/components/com_jombadger/models/fields"
         >
-     <fieldset name="request" label="COM_OPENBADGES_LABEL_CONFIG" description="COM_OPENBADGES_DESC_CONFIG_MENU">
-         <field type="openbadges" name="badgeid" label="COM_OPENBADGES_BADGEID" description="COM_OPENBADGES_BADGEID_DESC" />                	
+     <fieldset name="request" label="COM_JOMBADGER_LABEL_CONFIG" description="COM_JOMBADGER_DESC_CONFIG_MENU">
+         <field type="openbadges" name="badgeid" label="COM_JOMBADGER_BADGEID" description="COM_JOMBADGER_BADGEID_DESC" />                	
 	</fieldset>
     </fields>
 </metadata>

@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.view');
 
 
-class openbadgesViewopenbadges extends JView
+class JomBadgerViewopenbadges extends JView
 {
 	protected $items;
 	protected $pagination;
@@ -32,7 +32,7 @@ class openbadgesViewopenbadges extends JView
     $this->assignRef('userid', $userid);
     
     // What Access Rights does this user have? What can (s)he do?
-	$this->canDo = OpenBadgesHelper::getActions();
+	$this->canDo = JomBadgerHelper::getActions();
   
     // Set the toolbar
 	$this->addToolBar();
@@ -47,7 +47,7 @@ class openbadgesViewopenbadges extends JView
 protected function addToolBar() 
 	{
 		//creates the toolbar
-		JToolBarHelper::title( JText::_('COM_OPENBADGES_TITLE_BADGES'),'openbadges');
+		JToolBarHelper::title( JText::_('COM_JOMBADGER_TITLE_BADGES'),'jombadger');
     	if ($this->canDo->get('core.delete')) 
     	{
 			JToolBarHelper::deleteList('','openbadges.delete');
@@ -63,7 +63,7 @@ protected function addToolBar()
     	if ($this->canDo->get('core.admin'))
     	{
     		JToolBarHelper::divider();
-    		JToolBarHelper::preferences( 'com_openbadges','500','600' );
+    		JToolBarHelper::preferences( 'com_jombadger','500','600' );
     	}
     	JToolBarHelper::help( 'screen.openbadges',true );
 	}
@@ -72,7 +72,7 @@ protected function setDocument()
 	{
 		//set the title in the browser
 		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_OPENBADGES_BROWSERTITLE'));
+		$document->setTitle(JText::_('COM_JOMBADGER_BROWSERTITLE'));
 	}
 
 }

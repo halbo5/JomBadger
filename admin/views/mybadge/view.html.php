@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -15,7 +15,7 @@ jimport( 'joomla.application.component.view');
 
 
 
-class openbadgesViewmybadge extends JView
+class JomBadgerViewmybadge extends JView
 {
 	
 	
@@ -24,7 +24,7 @@ class openbadgesViewmybadge extends JView
 	function display($tpl = null)
 {
     
-    $component = &JComponentHelper::getComponent('com_openbadges');
+    $component = &JComponentHelper::getComponent('com_jombadger');
 	$params = new JParameter($component->params);
     $params->loadString($component->params);
 	
@@ -35,7 +35,7 @@ class openbadgesViewmybadge extends JView
 	$this->testBadge=$testBadge;
 	
     // What Access Rights does this user have? What can (s)he do?
-	$this->canDo = OpenBadgesHelper::getActions();
+	$this->canDo = JomBadgerHelper::getActions();
     
     $this->addToolBar();
  
@@ -54,7 +54,7 @@ protected function addToolBar()
 	$user = JFactory::getUser();
 	$userId = $user->id;
 	
-    JToolBarHelper::title(JText::_( 'COM_OPENBADGES_TITLE_MYBADGE' ),'openbadges');
+    JToolBarHelper::title(JText::_( 'COM_JOMBADGER_TITLE_MYBADGE' ),'jombadger');
     
     	//for new records, check the create permission
     	if ($this->canDo->get('core.create'))
@@ -70,8 +70,8 @@ protected function addToolBar()
 protected function setDocument() 
 	{
 		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_OPENBADGES_TITLE_MYBADGE')); 
-		$document->addStyleSheet('components/com_openbadges/openbadges.css');                      
+		$document->setTitle(JText::_('COM_JOMBADGER_TITLE_MYBADGE')); 
+		$document->addStyleSheet('components/com_jombadger/openbadges.css');                      
 	}
 
 

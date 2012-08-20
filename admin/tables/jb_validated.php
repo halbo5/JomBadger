@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -11,7 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
  
 
-class Tableob_records extends JTable
+class Tablejb_validated extends JTable
 {
     
  
@@ -21,6 +21,6 @@ class Tableob_records extends JTable
      * @param object Database connector object
      */
     function __construct( &$db ) {
-        parent::__construct('#__ob_records', 'id_record', $db);
+        parent::__construct('#__jb_validated', 'id_validated', $db);
     }
 }

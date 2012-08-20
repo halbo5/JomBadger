@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport('joomla.application.component.controllerform');
 
 
-class openbadgesControllerissuer extends JControllerForm
+class JomBadgerControllerissuer extends JControllerForm
 {
 
 	function __construct() {
@@ -32,7 +32,7 @@ class openbadgesControllerissuer extends JControllerForm
    		// Initialise variables.
     	$data           = JRequest::getVar('jform', array(), 'post', 'array');
     	$config =& JFactory::getConfig();
-    	$component = &JComponentHelper::getComponent('com_openbadges');
+    	$component = &JComponentHelper::getComponent('com_jombadger');
 		$params = new JParameter($component->params);
     	$params->loadString($component->params);
     	$issuerurl=$params->get('issuerurl');
@@ -43,16 +43,16 @@ class openbadgesControllerissuer extends JControllerForm
 	    $sendername=($sendername!="")?$sendername:$config->getValue('config.fromname');
 	    $sendermail=($issuercontact!="")?$issuercontact:$config->getValue('config.mailfrom');
 	    $sender = array($sendermail,$sendername);
-	    $subject=JText::_('COM_OPENBADGES_ISSUER_EMAILSUBJECT')." ".$sendername;
+	    $subject=JText::_('COM_JOMBADGER_ISSUER_EMAILSUBJECT')." ".$sendername;
 	    $path=JURI::root();
-	    $url=$path."index.php?option=com_openbadges&view=earnbadge&badgeid=".$data['badgeid'];
+	    $url=$path."index.php?option=com_jombadger&view=earnbadge&badgeid=".$data['badgeid'];
 	        	
 	    //create mail body message
-	    $message="<p>".JTEXT::_("COM_OPENBADGES_ISSUER_HELLO").",</p>";
-	    $message.="<p>".JTEXT::_("COM_OPENBADGES_ISSUER_EMAILCONTENT1")." :<a href='".$issuerurl."'>".$sendername."</a></p>";
-	    $message.="<p>".JTEXT::_("COM_OPENBADGES_ISSUER_EMAILCONTENT2")." :<br />";
+	    $message="<p>".JTEXT::_("COM_JOMBADGER_ISSUER_HELLO").",</p>";
+	    $message.="<p>".JTEXT::_("COM_JOMBADGER_ISSUER_EMAILCONTENT1")." :<a href='".$issuerurl."'>".$sendername."</a></p>";
+	    $message.="<p>".JTEXT::_("COM_JOMBADGER_ISSUER_EMAILCONTENT2")." :<br />";
 	    $message.="<a href='".$url."'>".$url."</a></p>";
-	    $message.="<p>".JTEXT::_("COM_OPENBADGES_ISSUER_GOODBYE").",</p>";
+	    $message.="<p>".JTEXT::_("COM_JOMBADGER_ISSUER_GOODBYE").",</p>";
 	    $message.=$sendername;
 		        
 	   	$mailer =& JFactory::getMailer();
@@ -64,14 +64,14 @@ class openbadgesControllerissuer extends JControllerForm
 		$test =& $mailer->Send();
 		if ($test)
 			{
-			$this->setMessage(JText::_('COM_OPENBADGES_ISSUER_MAILSUCCESS'));
+			$this->setMessage(JText::_('COM_JOMBADGER_ISSUER_MAILSUCCESS'));
 			}	
 		else {
-			$this->setMessage(JText::_('COM_OPENBADGES_ISSUER_MAILFAILED'));
+			$this->setMessage(JText::_('COM_JOMBADGER_ISSUER_MAILFAILED'));
 			}
    		}
    		else {
-   			$this->setMessage(JText::_('COM_OPENBADGES_ISSUER_DATANOTSAVED'));
+   			$this->setMessage(JText::_('COM_JOMBADGER_ISSUER_DATANOTSAVED'));
    		}	
    }
 }

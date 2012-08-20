@@ -1,9 +1,9 @@
 <?php
 /**
- * @package   muzeededi
+ * @package   JomBadger
  * @subpackage Components
- * components/com_muzeededi/muzeededi.php
- * @Copyright Copyright (C) 2010 Alain Bolli
+ * components/com_openbadges/jombadger.php
+ * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
 
@@ -14,10 +14,10 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.view');
 
 /**
- * HTML View class for the openbadges Component : view when earning a badge
+ * HTML View class for the JomBadger Component : view when earning a badge
  */
 
-class openbadgesViewearnbadge extends JView
+class JomBadgerViewearnbadge extends JView
 {
 	
 
@@ -29,13 +29,15 @@ class openbadgesViewearnbadge extends JView
 		$userid = $model->getUserId();
 		$user =& JFactory::getUser();
 		$date = date('Y-m-d');
+		$lang =& JFactory::getLanguage();
+		$this->langtag=$lang->getTag();
 		
 		$document = JFactory::getDocument();
-		$document->addStyleSheet('components/com_openbadges/openbadges.css');
+		$document->addStyleSheet('components/com_jombadger/openbadges.css');
 
 		$path=JURI::base();
 		$app=&JFactory::getApplication('site');
-        $params = &$app->getParams('com_openbadges');	  
+        $params = &$app->getParams('com_jombadger');	  
         $input = $app->input;
         
         $apiurl=$params->get('apiurl');
@@ -60,7 +62,7 @@ class openbadgesViewearnbadge extends JView
 				$salt=$model->rand_string(8);
 				$hashed_email = hash('sha256', $badgeRecipientEmail  . $salt);
 				$record=array();
-				$record['recipient']=$hashed_email;
+				$record['recipient']="sha256$".$hashed_email;
 				$record['salt']=$salt;
 				$record['earneremail']=$badgeRecipientEmail;
 				$record['evidence']=$evidence;
@@ -82,7 +84,7 @@ class openbadgesViewearnbadge extends JView
 						//delete proof of action validated in ob_validated
 						//$delete_validated=$model->deleteValidated($db,$badgeRecipientEmail);
 						$lastinsertedid=$db->insertid();
-						$recordedBadgeUrl=$path."index.php?option=com_openbadges&view=earnbadge&format=json&id=".$lastinsertedid;
+						$recordedBadgeUrl=$path."index.php?option=com_jombadger&view=earnbadge&format=json&debug=true&id=".$lastinsertedid;
 						$javascript=$model->createJavascript($recordedBadgeUrl,$this->badge->name,$badgeRecipientName);
 						$document->addScript($apiurl);
 						$document->addScriptDeclaration($javascript);		

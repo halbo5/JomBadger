@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -15,12 +15,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.modelitem' );
 
 
-class openbadgesModelearnbadge extends JModelItem
+class JomBadgerModelearnbadge extends JModelItem
 {
 
 	protected $badges;
 	
-public function getTable($type = 'ob_badges', $prefix = 'Table', $config = array()) 
+public function getTable($type = 'jb_badges', $prefix = 'Table', $config = array()) 
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -70,7 +70,7 @@ public function getBadge($id = 1)
             //request the selected id
 			$id=$this->getBadgeId();
 			// Get a Tablebadges instance
-			$table = $this->getTable('ob_badges');
+			$table = $this->getTable('jb_badges');
 			// Load the badge
 			$table->load($id);
 			$this->badges[$id]=$table;
@@ -83,7 +83,7 @@ public function getValidated($db,$usermail)
 	{
 		//request the selected id
 		$id = $this->getBadgeId();
-		$query = "SELECT * FROM #__ob_validated WHERE usermail='$usermail' AND badgeid='$id'";
+		$query = "SELECT * FROM #__jb_validated WHERE usermail='$usermail' AND badgeid='$id'";
 		$db->setQuery($query);
 		$result=$db->query();
 		$nbrows=$db->getAffectedRows();
@@ -93,7 +93,7 @@ public function getValidated($db,$usermail)
 public function deleteValidated($db,$usermail)
 	{
 		$id = $this->getBadgeId();
-		$query = "DELETE FROM #__ob_validated WHERE usermail='$usermail' AND badgeid='$id'";
+		$query = "DELETE FROM #__jb_validated WHERE usermail='$usermail' AND badgeid='$id'";
 		$db->setQuery($query);
 		$result=$db->query();
 		$nbrows=$db->getAffectedRows();
@@ -102,7 +102,7 @@ public function deleteValidated($db,$usermail)
 	
 public function storeBadge($record)
 	{
-		 $row =& $this->getTable('ob_records');
+		 $row =& $this->getTable('jb_records');
  
     // Bind the form fields to the badges table
     if (!$row->bind($record)) {
@@ -130,7 +130,7 @@ public function storeBadge($record)
 public function createJsonArray($db,$id)
 	{
 		//create JSON content for backpack
-		$query = "SELECT * FROM #__ob_records WHERE id_record='$id'";
+		$query = "SELECT * FROM #__jb_records WHERE id_record='$id'";
 		$db->setQuery($query);
 		$result=$db->loadAssoc();
 		
@@ -166,23 +166,20 @@ public function createJavascript($recordedBadgeUrl,$badgeName,$recipientName)
 		//$javascript.="if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){  //The Issuer API isn't supported on MSIE Bbrowsers";
 		//$javascript.="$('.backPackLink').hide();$('.login-info').hide();$('.browserSupport').show();";
 		//$javascript.="}";
-		//$javascript.="//Function that issues the badge";
+		//Function that issues the badge";
 		$javascript.="$('.backPackLink').click(function() {";
 		$javascript.="var assertionUrl = '".$recordedBadgeUrl."';";
        	$javascript.="OpenBadges.issue([''+assertionUrl+''], function(errors, successes){"; 
-		/*$javascript.="if (errors.length > 0 ) {";
-		$javascript.="$('#errMsg').text('Error Message: '+ errors.toSource());";
+		$javascript.="if (errors.length > 0 ) {";
+		$javascript.="$('#errMsg').text(errors.toSource());";
 		$javascript.="$('#badge-error').show();";	
-		$javascript.="var data = 'ERROR, ".$badgeName.", ".$recipientName.", ' +  errors.toSource();";
-		//$javascript.="alert(data);";
+		//$javascript.="var data = 'ERROR, ".$badgeName.", ".$recipientName.", ' +  errors.toSource();";
 		$javascript.="}";
 		$javascript.="if (successes.length > 0) {";
      	$javascript.="$('.backPackLink').hide();$('.login-info').hide();$('#badgeSuccess').show();";
-		$javascript.="var data = 'SUCCESS, ".$badgeName.", ".$recipientName."';";
-		//$javascript.="alert(data);";
+		//$javascript.="var data = 'SUCCESS, ".$badgeName.", ".$recipientName."';";
 		$javascript.="}});});});";
-		*/
-       	$javascript.="});});});";
+       	//$javascript.="});});});";
 		return $javascript;
 	}
 }

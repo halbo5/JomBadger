@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -15,7 +15,7 @@ jimport( 'joomla.application.component.view');
 
 
 
-class openbadgesViewopenbadges extends JView
+class JomBadgerViewopenbadges extends JView
 {
 	
 
@@ -25,7 +25,7 @@ class openbadgesViewopenbadges extends JView
 		$model =& $this->getModel();
 		
 		$document = JFactory::getDocument();
-		$document->addStyleSheet('components/com_openbadges/openbadges.css');
+		$document->addStyleSheet('components/com_jombadger/openbadges.css');
      
         		
 		//$path=JURI::base();

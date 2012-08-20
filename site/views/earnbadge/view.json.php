@@ -1,9 +1,9 @@
 <?php
 /**
- * @package   muzeededi
+ * @package   JomBadger
  * @subpackage Components
- * components/com_muzeededi/muzeededi.php
- * @Copyright Copyright (C) 2010 Alain Bolli
+ * components/com_openbadges/jombadger.php
+ * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
 
@@ -17,7 +17,7 @@ jimport( 'joomla.application.component.view');
  * JSON View class for the openbadges Component : url for backpack
  */
 
-class openbadgesViewearnbadge extends JView
+class JomBadgerViewearnbadge extends JView
 {
 	
 

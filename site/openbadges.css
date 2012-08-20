@@ -1,22 +1,9 @@
-.mzd_marquee,fieldset{
-	border:1px solid #ff9900;
-    background-color:#ffffff;
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    border-radius:10px;
-    line-height:1.2em;
-    margin:4px;
-    padding:4px;
-    color:#000000;
-}
-
-
-.mzd_petit {
+.jb_petit {
 	font-size:0.8em;
 }
 
 
-div.mzd_centrer {
+div.jb_centrer {
 	text-align:center;
 }
 
@@ -29,5 +16,13 @@ div.mzd_centrer {
 	text-decoration: none;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+#badge-error {
+	display: none;
+}
+
+#badgeSuccess {
+	display: none;
 }
 	

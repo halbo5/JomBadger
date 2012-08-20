@@ -1,4 +1,4 @@
-.ob_tick1{
+.jb_tick1{
 	list-style-type: none;
  	background-image: url(yes.png);
 	background-repeat: no-repeat;
@@ -7,7 +7,7 @@
  	line-height:20px;
 }
 
-.ob_tick0 {
+.jb_tick0 {
 	list-style-type: none;
  	background-image: url(no.png);
 	background-repeat: no-repeat;
@@ -17,12 +17,12 @@
 	}
 
 
-.ob_petit {
+.jb_petit {
 	font-size:0.8em;
 }
 
 
-div.ob_centrer {
+div.jb_centrer {
 	text-align:center;
 }
 
@@ -37,14 +37,14 @@ div.ob_centrer {
 	cursor: pointer;
 }
 
-.ob_congratulations {
+.jb_congratulations {
 	font-size:1.8em;
 	font-weight: bold;
 	text-align:center;
 	
 }
 
-.ob_button {
+.jb_button {
 	border:1px solid #ff9900;
     background-color:#ffffff;
     -moz-border-radius:10px;
@@ -56,7 +56,7 @@ div.ob_centrer {
     font-size:1.4em;
     text-decoration: none;
 }
-.ob_button:hover {
+.jb_button:hover {
 	border:1px solid #ff9900;
     background-color:#ffffcc;
     -moz-border-radius:10px;
@@ -69,7 +69,7 @@ div.ob_centrer {
     text-decoration: none;
 }
 
-.ob_button a:hover {
+.jb_button a:hover {
 	text-decoration: none;
 }
 	

@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -12,8 +12,8 @@ JHtml::_('behavior.formvalidation');
 
 ?>
  
-<form action="<?php echo JRoute::_('index.php?option=com_openbadges');?>" method="post" name="adminForm" id="issuer-form" class="form-validate">
-   <?php echo "<p>".JText::_('COM_OPENBADGES_ISSUER_INTROTEXT')."</p>"; ?>
+<form action="<?php echo JRoute::_('index.php?option=com_jombadger');?>" method="post" name="adminForm" id="issuer-form" class="form-validate">
+   <?php echo "<p>".JText::_('COM_JOMBADGER_ISSUER_INTROTEXT')."</p>"; ?>
     <fieldset class="adminform">
         <ul class="adminformlist">
       	<?php

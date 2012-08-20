@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.modellist' );
 
 
-class openbadgesModelopenbadges extends JModelList
+class JomBadgerModelopenbadges extends JModelList
 {
 
 	
@@ -30,8 +30,8 @@ function getListQuery()
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('id_badge,#__ob_badges.name as name, #__ob_badges.image as image, #__ob_badges.description as description, criteria_url,expires, catid, #__categories.title as catname');
-		$query->from('#__ob_badges');
+		$query->select('id_badge,#__jb_badges.name as name, #__jb_badges.image as image, #__jb_badges.description as description, criteria_url,expires, catid, #__categories.title as catname');
+		$query->from('#__jb_badges');
 		$query->leftjoin('#__categories on catid=#__categories.id');
 		$query->order('name');
 		
@@ -43,9 +43,9 @@ function getListQuery()
 
 			// Compile the different search clauses.
 			$searches	= array();
-			$searches[]	= '#__ob_badges.name LIKE '.$token;
-			$searches[]	= '#__ob_badges.description LIKE '.$token;
-			$searches[]	= '#__ob_badges.expires LIKE '.$token;
+			$searches[]	= '#__jb_badges.name LIKE '.$token;
+			$searches[]	= '#__jb_badges.description LIKE '.$token;
+			$searches[]	= '#__jb_badges.expires LIKE '.$token;
 			$searches[]	= '#__categories.title LIKE '.$token;
 
 			// Add the clauses to the query.

@@ -1,1 +1,1 @@
-DROP TABLE `#__ob_badges`;
+DROP TABLE `#__jb_badges`;

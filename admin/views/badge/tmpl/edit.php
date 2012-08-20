@@ -1,8 +1,8 @@
 <?php
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -12,9 +12,9 @@ JHtml::_('behavior.formvalidation');
 
 ?>
  
-<form action="<?php echo JRoute::_('index.php?option=com_openbadges&layout=edit&id_badge='.(int) $this->item->id_badge);?>" method="post" name="adminForm" id="badge-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_jombadger&layout=edit&id_badge='.(int) $this->item->id_badge);?>" method="post" name="adminForm" id="badge-form" class="form-validate">
     <fieldset class="adminform">
-        <legend><?php echo JText::_( 'COM_OPENBADGES_DETAILS' ); ?></legend>
+        <legend><?php echo JText::_( 'COM_JOMBADGER_DETAILS' ); ?></legend>
         <ul class="adminformlist">
       	<?php
       	foreach($this->form->getFieldset() as $field): 

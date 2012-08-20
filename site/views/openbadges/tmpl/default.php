@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @package   openbadges
+ * @package   Jombadger
  * @subpackage Components
- * components/com_openbadges/openbadges.php
+ * components/com_jombadger/jombadger.php
  * @Copyright Copyright (C) 2012 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
@@ -13,7 +13,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 
-echo "<h1>".JText::_('COM_OPENBADGES_TITLE_LIST_CATEGORIES')."</h1>";
+echo "<h1>".JText::_('COM_JOMBADGER_TITLE_LIST_CATEGORIES')."</h1>";
 
 foreach($this->categories as $category)
   	{
@@ -27,7 +27,7 @@ foreach($this->categories as $category)
         		{
         			echo "<tr><td><img src='".$badge->image."' /></td>";
         			echo "<td>".$badge->name."</td><td>".$badge->description."</td>";
-        			echo "<td><a href='".$badge->criteria_url."'>".JText::_('COM_OPENBADGES_BADGE_DETAILS')."</a></td></tr>";
+        			echo "<td><a href='".$badge->criteria_url."'>".JText::_('COM_JOMBADGER_BADGE_DETAILS')."</a></td></tr>";
         		}
         echo "</tbody></table>";
   	}      
