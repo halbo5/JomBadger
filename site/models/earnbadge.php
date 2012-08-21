@@ -182,7 +182,7 @@ public function createJsonArray($db,$id)
 		
 	}
 
-public function createJavascript($recordedBadgeUrl,$badgeName,$recipientName)
+public function createJavascript($id_record,$recordedBadgeUrl,$badgeName,$recipientName)
 	{
 		//create the javascript for contacting openbadges api
 		$javascript="jQuery.noConflict();";
@@ -197,12 +197,17 @@ public function createJavascript($recordedBadgeUrl,$badgeName,$recipientName)
        	$javascript.="OpenBadges.issue([''+assertionUrl+''], function(errors, successes){"; 
 		$javascript.="if (errors.length > 0 ) {";
 		$javascript.="$('#errMsg').text(errors.toSource());";
-		$javascript.="$('#badge-error').show();";	
+		//$javascript.="$('#badge-error').show();";	
 		//$javascript.="var data = 'ERROR, ".$badgeName.", ".$recipientName.", ' +  errors.toSource();";
 		$javascript.="}";
 		$javascript.="if (successes.length > 0) {";
      	$javascript.="$('.backPackLink').hide();$('.login-info').hide();$('#badgeSuccess').show();";
 		//$javascript.="var data = 'SUCCESS, ".$badgeName.", ".$recipientName."';";
+		$javascript.="$.ajax({";
+  		$javascript.="type: \"POST\",";
+  		$javascript.="url: '".$path."index.php?option=com_jombadger&task=ajax_transfer_backpack&id_record=".$id_record."',";
+  		$javascript.="data: { id_record: $id_record }";
+		$javascript.="})";//end of l'ajax
 		$javascript.="}});});});";
        	//$javascript.="});});});";
 		return $javascript;

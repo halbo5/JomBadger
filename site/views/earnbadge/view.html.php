@@ -106,7 +106,7 @@ class JomBadgerViewearnbadge extends JView
 						$id_record=($id_record)?$id_record:$db->insertid();
 						//$lastinsertedid=$db->insertid();
 						$recordedBadgeUrl=$path."index.php?option=com_jombadger&view=earnbadge&debug=true&format=json&id=".$id_record;
-						$javascript=$model->createJavascript($recordedBadgeUrl,$this->badge->name,$badgeRecipientName);
+						$javascript=$model->createJavascript($id_record,$recordedBadgeUrl,$this->badge->name,$badgeRecipientName);
 						$document->addScript($apiurl);
 						$document->addScriptDeclaration($javascript);		
 					}

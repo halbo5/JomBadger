@@ -10,10 +10,10 @@ SET time_zone = "+00:00";
 
 
 --
--- Structure de la table `#__ob_records`
+-- Structure de la table `#__jb_records`
 --
 
-CREATE TABLE IF NOT EXISTS `#__ob_records` (
+CREATE TABLE IF NOT EXISTS `#__jb_records` (
   `id_record` int(11) NOT NULL AUTO_INCREMENT,
   `evidence` varchar(200) NOT NULL COMMENT 'url that can prove badge is earned',
   `recipient` int(11) NOT NULL COMMENT 'hashed email',
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `#__ob_records` (
 
 
 --
--- Structure de la table `ob_badges`
+-- Structure de la table `jb_badges`
 --
 
 CREATE TABLE IF NOT EXISTS `#__jb_badges` (
@@ -53,10 +53,10 @@ CREATE TABLE IF NOT EXISTS `#__jb_badges` (
 
 
 --
--- Structure de la table `ob_validated`
+-- Structure de la table `jb_validated`
 --
 
-CREATE TABLE IF NOT EXISTS `#__ob_validated` (
+CREATE TABLE IF NOT EXISTS `#__jb_validated` (
   `id_validated` int(11) NOT NULL AUTO_INCREMENT,
   `usermail` varchar(100) NOT NULL,
   `badgeid` int(11) NOT NULL,

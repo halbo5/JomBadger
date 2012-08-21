@@ -16,4 +16,16 @@ jimport('joomla.application.component.controller');
 
 class JomBadgerController extends JController
 {
+	
+	function ajax_transfer_backpack()
+	 {
+		$input = JFactory::getApplication()->input;
+		$id_record = $input->get('id_record', '', 'post');
+	 	
+	 	$db	   =& JFactory::getDBO();
+		$query = "UPDATE #__jb_records SET transfered='1' where id_record='".$id_record."'";
+		$db->setQuery($query);
+		$result=$db->query();
+	}	
+	
 }
