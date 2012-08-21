@@ -31,14 +31,22 @@ class JomBadgerViewearnbadge extends JView
 		$date = date('Y-m-d');
 		$lang =& JFactory::getLanguage();
 		$this->langtag=$lang->getTag();
+		$this->langtag=str_replace("-","_",$this->langtag);
 		
-		$document = JFactory::getDocument();
-		$document->addStyleSheet('components/com_jombadger/openbadges.css');
-
 		$path=JURI::base();
 		$app=&JFactory::getApplication('site');
         $params = &$app->getParams('com_jombadger');	  
         $input = $app->input;
+        $this->appid=$params->getValue('appid');
+		
+		$document = JFactory::getDocument();
+		$document->addStyleSheet('components/com_jombadger/openbadges.css');
+		//récupère le code javascript du plugin facebook pour jquery
+		$jq=$model->jqFBplugin($this->langtag);
+		$document->addScriptDeclaration($jq);
+		$document->addScript("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js");
+		
+		
         
         $apiurl=$params->get('apiurl');
         if (!$apiurl){$apiurl="http://beta.openbadges.org/issuer.js";}

@@ -25,4 +25,12 @@ div.jb_centrer {
 #badgeSuccess {
 	display: none;
 }
+
+#loader {
+	display: none;
+}
+
+.jb_facebook {
+	cursor:pointer;
+}
 	

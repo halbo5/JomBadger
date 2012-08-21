@@ -8,6 +8,12 @@
 	<field type="text" name="issuerorg" size="40" label="COM_JOMBADGER_LABEL_ISSUERORG" description="COM_JOMBADGER_DESC_ISSUERORG" default="" />
     <field type="text" name="issuercontact" size="40" label="COM_JOMBADGER_LABEL_ISSUERCONTACT" description="COM_JOMBADGER_DESC_ISSUERCONTACT" default="" />
 </fieldset>
+<fieldset name="facebook" label="COM_JOMBADGER_LABEL_FACEBOOK" description="COM_JOMBADGER_DESC_FACEBOOK">
+	<field name="appid" type="text"
+					description="COM_JOMBADGER_FACEBOOK_APPID_DESC"
+					label="COM_JOMBADGER_FACEBOOK_APPID_LABEL"
+				/>
+</fieldset>
 <fieldset
 		name="permissions"
 		label="JCONFIG_PERMISSIONS_LABEL"
