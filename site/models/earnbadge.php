@@ -100,6 +100,31 @@ public function deleteValidated($db,$usermail)
 		return $nbrows;	
 	}
 	
+	
+public function verifBadge($db,$record)
+	{
+		//test if record already exists for this badge and user
+		$id = $this->getBadgeId();
+		$query = "SELECT id_record FROM #__jb_records WHERE evidence='".$record['evidence'];
+		$query.=									"' AND earneremail='".$record['earneremail'];
+		$query.=									"' AND earnername='".$record['earnername'];
+		$query.=									"' AND badgename='".$record['badgename'];
+		$query.=									"' AND badgeimage='".$record['badgeimage'];
+		$query.=									"' AND badgedescription='".$record['badgedescription'];
+		$query.=									"' AND badgecriteria='".$record['badgecriteria'];
+		$query.=									"' AND badgeexpires='".$record['badgeexpires'];
+		$query.=									"' AND badgeissuerorigin='".$record['badgeissuerorigin'];
+		$query.=									"' AND badgeissuername='".$record['badgeissuername'];
+		$query.=									"' AND badgeissuerorg='".$record['badgeissuerorg'];
+		$query.=									"' AND badgeissuercontact='".$record['badgeissuercontact']."'";
+			
+		$db->setQuery($query);
+		$db->query();
+		$result=$db->loadResult($db);
+		
+		return $result;	
+	}
+	
 public function storeBadge($record)
 	{
 		 $row =& $this->getTable('jb_records');
@@ -171,7 +196,7 @@ public function createJavascript($recordedBadgeUrl,$badgeName,$recipientName)
 		$javascript.="var assertionUrl = '".$recordedBadgeUrl."';";
        	$javascript.="OpenBadges.issue([''+assertionUrl+''], function(errors, successes){"; 
 		$javascript.="if (errors.length > 0 ) {";
-		//$javascript.="$('#errMsg').text(errors.toSource());";
+		$javascript.="$('#errMsg').text(errors.toSource());";
 		$javascript.="$('#badge-error').show();";	
 		//$javascript.="var data = 'ERROR, ".$badgeName.", ".$recipientName.", ' +  errors.toSource();";
 		$javascript.="}";

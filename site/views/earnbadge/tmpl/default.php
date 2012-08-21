@@ -9,6 +9,7 @@
 
 defined('_JEXEC') or die('Restricted access');
 
+$verif=$this->verif;
 $validated=$this->validated;
 $store=$this->store;
 $userid=$this->userid;
@@ -151,6 +152,10 @@ else {
 			
 			
 				
+				<?php //if facebook appid is in parameters, we display a button to post to wall
+				if ($this->appid!="")
+					{
+					?>
 				<p><a class="jb_facebook" onclick='showStream(); return false;'><?php echo JText::_('COM_JOMBADGER_POSTTOFEED');?></a></p>
     			<p id='msg'></p>
     			<p id='loader'><?php echo JText::_('COM_JOMBADGER_FACEBOOKONSCREEN');?></p>
@@ -166,7 +171,7 @@ else {
 			      }
 			    
 			    </script>-->
-			<?php 
+			<?php }//end facebook button
 			}
 		else {
 			echo "<p>".JText::_('COM_JOMBADGER_BADGE_STORE_ERROR')."</p>";

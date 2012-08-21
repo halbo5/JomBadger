@@ -24,42 +24,45 @@ class JomBadgerViewearnbadge extends JView
 	
 	function display($tpl = null)
 	{
+		//variables initialization
 		$model =& $this->getModel();
 		$db = $model->connectDB();
 		$userid = $model->getUserId();
 		$user =& JFactory::getUser();
+		$badgeRecipientName=$user->name;
+        $badgeRecipientEmail=$user->email;
 		$date = date('Y-m-d');
 		$lang =& JFactory::getLanguage();
 		$this->langtag=$lang->getTag();
 		$this->langtag=str_replace("-","_",$this->langtag);
 		
+		//Parameters
 		$path=JURI::base();
 		$app=&JFactory::getApplication('site');
         $params = &$app->getParams('com_jombadger');	  
         $input = $app->input;
         $this->appid=$params->getValue('appid');
-		
-		$document = JFactory::getDocument();
+		$apiurl=$params->get('apiurl');
+        if (!$apiurl){$apiurl="http://beta.openbadges.org/issuer.js";}
+        
+		//adding some css and javascript
+        $document = JFactory::getDocument();
 		$document->addStyleSheet('components/com_jombadger/openbadges.css');
-		//récupère le code javascript du plugin facebook pour jquery
+		//insert javascript facebook plugin for jquery
 		$jq=$model->jqFBplugin($this->langtag);
 		$document->addScriptDeclaration($jq);
-		$document->addScript("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js");
-		
-		
-        
-        $apiurl=$params->get('apiurl');
-        if (!$apiurl){$apiurl="http://beta.openbadges.org/issuer.js";}
-       
-        
-        $badgeRecipientName=$user->name;
-        $badgeRecipientEmail=$user->email;
+		//add last version of jquery
+		$document->addScript("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js");    
         
 		//we look for badge's datas
-		$this->badge = $this->get('badge');
-		if (!$this->badge){$this->badge="";}
+		$this->badge = ($this->get('badge'))?$this->get('badge'):"";
 							
-		$validated = $model->getValidated($db,$badgeRecipientEmail);
+		//test if badge is validated for current user
+		if ($badgeRecipientEmail!="")
+			{
+			$validated = $model->getValidated($db,$badgeRecipientEmail);
+			}
+		else {$validated=0;}
 		if ($validated>0)
 			{
 				//action to win badge is validated
@@ -86,13 +89,23 @@ class JomBadgerViewearnbadge extends JView
 				$record['badgeissuername']=$params->get('issuername');
 				$record['badgeissuerorg']=$params->get('issuerorg');
 				$record['badgeissuercontact']=$params->get('issuercontact');
-				$store=$model->storeBadge($record);
+				//first we test if badge is not already recorded for this user
+				$verif=$model->verifBadge($db,$record);
+				if ($verif=="")
+					{//if function does not return value, record does not exist
+					$store=$model->storeBadge($record);
+					}
+				else {
+					$id_record=$verif;
+					$store=1;//we affect something to $store so badge is considered valid in default.php
+				}
 				if ($store)
 					{
 						//delete proof of action validated in ob_validated
 						//$delete_validated=$model->deleteValidated($db,$badgeRecipientEmail);
-						$lastinsertedid=$db->insertid();
-						$recordedBadgeUrl=$path."index.php?option=com_jombadger&view=earnbadge&format=json&debug=true&id=".$lastinsertedid;
+						$id_record=($id_record)?$id_record:$db->insertid();
+						//$lastinsertedid=$db->insertid();
+						$recordedBadgeUrl=$path."index.php?option=com_jombadger&view=earnbadge&debug=true&format=json&id=".$id_record;
 						$javascript=$model->createJavascript($recordedBadgeUrl,$this->badge->name,$badgeRecipientName);
 						$document->addScript($apiurl);
 						$document->addScriptDeclaration($javascript);		
@@ -106,7 +119,7 @@ class JomBadgerViewearnbadge extends JView
 			}
 		
 		
-		
+		$this->assignRef( 'verif', $verif );
 		$this->assignRef( 'validated', $validated );
 		$this->assignRef( 'store', $store );
 		$this->assignRef( 'userid', $userid );
