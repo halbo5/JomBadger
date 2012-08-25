@@ -24,6 +24,9 @@ abstract class JomBadgerHelper
 		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_CATEGORIES'),
 		                         'index.php?option=com_categories&view=categories&extension=com_jombadger',
 		                         $submenu == 'categories');
+		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_ISSUEDBADGES'),
+		                         'index.php?option=com_jombadger&view=issued',
+		                         $submenu == 'issued');                        
 		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_MYBADGE'),
 		                         'index.php?option=com_jombadger&view=mybadge',
 		                         $submenu == 'mybadge');

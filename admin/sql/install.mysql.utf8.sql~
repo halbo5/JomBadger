@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `#__jb_records` (
   `badgeissuername` varchar(100) NOT NULL,
   `badgeissuerorg` varchar(100) NOT NULL,
   `badgeissuercontact` varchar(100) NOT NULL,
+  `transfered` BOOLEAN NULL DEFAULT NULL COMMENT '1 if transfered to backpack',
   PRIMARY KEY (`id_record`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='records of earned badges' AUTO_INCREMENT=1 ;
 
