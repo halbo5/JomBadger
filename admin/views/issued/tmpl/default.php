@@ -22,7 +22,7 @@ $userid=$this->userid;
 		}
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_jombadger'); ?>" method="post" name="adminForm" id=adminForm>
+<form action="<?php echo JRoute::_('index.php?option=com_jombadger&view=issued'); ?>" method="post" name="adminForm" id=adminForm>
 <fieldset id="filter-bar">
 <div class="filter-search fltlft">
 	<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
