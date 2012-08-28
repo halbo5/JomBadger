@@ -30,6 +30,9 @@ abstract class JomBadgerHelper
 		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_MYBADGE'),
 		                         'index.php?option=com_jombadger&view=mybadge',
 		                         $submenu == 'mybadge');
+		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_EDITOR'),
+		                         'index.php?option=com_jombadger&view=editor',
+		                         $submenu == 'editor');
 		// set some global property
 		$document = JFactory::getDocument();
 		$document->addStyleDeclaration('.icon-48-jombadger ' .

@@ -32,6 +32,8 @@ class JomBadgerViewissued extends JView
     $this->assignRef('userid', $userid);
     // What Access Rights does this user have? What can (s)he do?
 	$this->canDo = JomBadgerHelper::getActions();
+	
+	//$this->languages=$model->languages();
   
     // Set the toolbar
 	$this->addToolBar();
