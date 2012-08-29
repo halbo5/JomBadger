@@ -33,6 +33,7 @@ function getBadgesValidated($mail)
 		$query->select('id_validated,usermail,badgeid,id_badge,#__jb_badges.name as name, #__jb_badges.image as image, #__jb_badges.description as description, criteria_url,expires');
 		$query->from('#__jb_validated');
 		$query->leftjoin('#__jb_badges on badgeid=#__jb_badges.id_badge');
+		$query->where('usermail=\''.$mail.'\'');
 		$query->order('name');
 		$query->group('badgeid');
 		$db->setQuery((string)$query);

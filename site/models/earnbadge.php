@@ -79,25 +79,68 @@ public function getBadge($id = 1)
 		return $this->badges[$id];
 	}
 	
-public function getValidated($db,$usermail)
+	
+/*public function getBadgeRecorded($id) 
+	{
+		if (!is_array($this->records))
+		{
+			$this->records = array();
+		}
+ 
+		if (!isset($this->records[$id])) 
+		{
+			// Get a Tablerecords instance
+			$table = $this->getTable('jb_records');
+			// Load the badge
+			$table->load($id);
+			$this->records[$id]=$table;
+		}
+ 
+		return $this->records[$id];
+	}*/
+	
+	
+public function getValidated($db,$usermail,$id_record)
 	{
 		//request the selected id
 		$id = $this->getBadgeId();
-		$query = "SELECT * FROM #__jb_validated WHERE usermail='$usermail' AND badgeid='$id'";
-		$db->setQuery($query);
-		$result=$db->query();
-		$nbrows=$db->getAffectedRows();
-		return $nbrows;		
+		if ($id!="")
+			{//if nbrows >0 there are badges validated that can be generated and transmitted
+			$query = "SELECT id_validated FROM #__jb_validated WHERE usermail='$usermail' AND badgeid='$id'";
+			$db->setQuery($query);
+			$result=$db->query();
+			$nbrows=$db->getAffectedRows();
+			return $nbrows;	
+			}
+		else {
+			if ($id_record!="")
+			{
+				//if nbrows >0 there are badges already generated that can be transmitted
+				$query = "SELECT id_record FROM #__jb_records WHERE earneremail='$usermail' AND id_record='$id_record'";
+				//var_dump($query);
+				$db->setQuery($query);
+				$result=$db->query();
+				$nbrows=$db->getAffectedRows();
+				return $nbrows;
+			}
+			else {
+				$nbrows=0;//no badges to generate or to validate
+				return $nbrows;
+			}
+		}	
 	}
 	
 public function deleteValidated($db,$usermail)
 	{
-		$id = $this->getBadgeId();
-		$query = "DELETE FROM #__jb_validated WHERE usermail='$usermail' AND badgeid='$id'";
-		$db->setQuery($query);
-		$result=$db->query();
-		$nbrows=$db->getAffectedRows();
-		return $nbrows;	
+		//delete datas for badge validation once the badge is created
+		
+		$id = $this->getBadgeId();//look for badgeid in url or page parameters
+		
+			$query = "DELETE FROM #__jb_validated WHERE usermail='$usermail' AND badgeid='$id'";
+			$db->setQuery($query);
+			$result=$db->query();
+			$nbrows=$db->getAffectedRows();
+			return $nbrows;
 	}
 	
 	

@@ -14,6 +14,7 @@ $validated=$this->validated;
 $store=$this->store;
 $userid=$this->userid;
 $criteria_url=$this->criteria_url;
+$id_record=$this->id_record;
 
 If ($userid<1)
 {
@@ -124,12 +125,11 @@ function showLoader(status){
 <?php 
 
 
-
 echo "<h1>$titre_page</h1>";
 echo "<p>$text_before</p>";
 echo "<br />";
 
-if ($validated=="0")
+if ($validated=="0" && $id_record=="" )
 	{
 		//no validated action to receive a badge
 		echo "<p>".JTEXT::_('COM_JOMBADGER_TEXT_NOTVALIDATED')."</p>";
@@ -138,6 +138,7 @@ if ($validated=="0")
 	}
 else {
 		//action to receive badge validated, we can continue
+
 		if ($store)
 			{
 				//badge has been created for earner
