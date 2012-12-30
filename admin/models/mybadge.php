@@ -58,7 +58,7 @@ public function testBadge($params)
 		$query = $db->getQuery(true);
 		$query->select('extension_id');
 		$query->from('#__extensions');
-		$query->where('element=\'obvalidate\'');
+		$query->where('element=\'jbvalidate\'');
 		$db->setQuery((string)$query);
 		$db->query();
 		$rowsplugin = $db->getNumRows();

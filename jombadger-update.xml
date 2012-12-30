@@ -80,4 +80,24 @@
       <section>some-section</section>
       <targetplatform name="joomla" version="2.5" />
    </update>
+            <update>
+      <name>com_jombadger</name>
+      <description>OpenBadges Component</description>
+      <element>com_jombadger</element>
+      <type>component</type>
+      <version>0.91</version>
+ 
+      <infourl title="OpenBadges URL">http://www.bolli.fr</infourl>
+      <downloads>
+         <downloadurl type="full" format="tgz">http://www.bolli.fr/update/files/com_jombadger-0.91.zip</downloadurl>
+      </downloads>
+      <tags>
+         <tag>com_jombadger</tag>
+      </tags>
+ <client_id>1</client_id>
+      <maintainer>bolli.fr</maintainer>
+      <maintainerurl>http://www.bolli.fr</maintainerurl>
+      <section>some-section</section>
+      <targetplatform name="joomla" version="2.5" />
+   </update>
 </updates>
