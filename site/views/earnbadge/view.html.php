@@ -15,6 +15,7 @@ jimport( 'joomla.application.component.view');
 
 /**
  * HTML View class for the JomBadger Component : view when earning a badge
+ * Test if badge is validated and sends to mozilla's backpack
  */
 
 class JomBadgerViewearnbadge extends JView
@@ -81,6 +82,7 @@ class JomBadgerViewearnbadge extends JView
 		$record['badgeissuername']=$params->get('issuername');
 		$record['badgeissuerorg']=$params->get('issuerorg');
 		$record['badgeissuercontact']=$params->get('issuercontact');
+		
 							
 		//test if badge is validated for current user
 		if ($badgeRecipientEmail!="")
@@ -96,20 +98,29 @@ class JomBadgerViewearnbadge extends JView
 				
 				//first we test if badge is not already recorded for this user
 				$verif=$model->verifBadge($db,$record);
+				
 				if ($verif=="" && $id_record=="")
 					{//if function does not return value, record does not exist
 					$store=$model->storeBadge($record);
 					}
 				else {
 					$id_record=($id_record!="")?$id_record:$verif;
+					
 					$store=1;//we affect something to $store so badge is considered valid in default.php
 				}
 				if ($store)
 					{
-						//delete proof of action validated in ob_validated
-						$delete_validated=$model->deleteValidated($db,$badgeRecipientEmail);
+						//delete proof of action validated in jb_validated
+						//var_dump($db->insertid());var_dump($id_record);
 						$id_record=($id_record)?$id_record:$db->insertid();
+						$delete_validated=$model->deleteValidated($db,$badgeRecipientEmail);
+						
+						//var_dump($id_record);echo "<br>";
+						
 						$recordedBadgeUrl=$path."index.php?option=com_jombadger&view=earnbadge&debug=true&format=json&id=".$id_record;
+						
+						//var_dump($recordedBadgeUrl);
+						
 						$javascript=$model->createJavascript($id_record,$recordedBadgeUrl,$this->badge->name,$badgeRecipientName);
 						$document->addScript($apiurl);
 						$document->addScriptDeclaration($javascript);		

@@ -170,6 +170,7 @@ public function verifBadge($db,$record)
 	
 public function storeBadge($record)
 	{
+		
 		 $row =& $this->getTable('jb_records');
     // Bind the form fields to the badges table
     if (!$row->bind($record)) {
