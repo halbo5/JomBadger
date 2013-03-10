@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.view');
 
 
-class JomBadgerViewissued extends JView
+class JomBadgerViewissued extends JViewLegacy
 {
 	protected $items;
 	protected $pagination;

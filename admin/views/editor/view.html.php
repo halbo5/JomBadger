@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.view');
 
 
-class JomBadgerVieweditor extends JView
+class JomBadgerVieweditor extends JViewLegacy
 {
 	
 	function display($tpl = null) 

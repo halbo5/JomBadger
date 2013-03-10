@@ -2,7 +2,7 @@
 <form
 	addrulepath="/administrator/components/com_jombadger/models/rules"
 	>
-	<fieldset>
+	<fieldset name="badge">
 		<field
 			name="id_badge"
 			type="hidden"
@@ -79,5 +79,18 @@
 			class="validate-date"
 		/>
 	</fieldset>
+	<fieldset name="accesscontrol">
+        <field name="asset_id" type="hidden" filter="unset" />
+        <field name="rules"
+                type="rules"
+                label="JFIELD_RULES_LABEL"
+                translate_label="false"
+                filter="rules"
+                validate="rules"
+                class="inputbox"
+                component="com_jombadger"
+                section="badge"
+        />
+    </fieldset>
 </form>
 

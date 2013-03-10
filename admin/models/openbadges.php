@@ -70,7 +70,19 @@ protected function populateState($ordering = null, $direction = null)
  
 		// List state information.
 		parent::populateState($ordering = null, $direction = null);
-	}		
+	}
+
+
+	/**
+	 * Method to check if it's OK to delete a badge. Overwrites JModelAdmin::canDelete
+	 */
+protected function canDelete($record)
+	{
+		if( !empty( $record->id ) ){
+			$user = JFactory::getUser();
+			return $user->authorise( "core.delete", "com_jombadger.badge." . $record->id );
+		}
+	}
 		
 
 }

@@ -72,4 +72,13 @@ protected function populateState($ordering = null, $direction = null)
 	}		
 		
 
+	
+	protected function canDelete($record)
+	{
+		if( !empty( $record->id ) ){
+			$user = JFactory::getUser();
+			return $user->authorise( "core.delete", "com_jombadger.record." . $record->id );
+		}
+	}	
+	
 }

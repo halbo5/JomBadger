@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `#__jb_records` (
   `id_record` int(11) NOT NULL AUTO_INCREMENT,
   `evidence` varchar(200) NOT NULL COMMENT 'url that can prove badge is earned',
-  `recipient` int(11) NOT NULL COMMENT 'hashed email',
+  `recipient` varchar(128) NOT NULL COMMENT 'hashed email',
   `salt` varchar(8) NOT NULL COMMENT 'for email hashing',
   `earnername` varchar(100) NOT NULL,
   `earneremail` varchar(100) NOT NULL,

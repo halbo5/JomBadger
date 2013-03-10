@@ -7,8 +7,9 @@
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>alain.bolli@gmail.com</authorEmail>
 	<authorUrl>http://www.bolli.fr</authorUrl>
-	<version>0.92</version>
+	<version>0.950</version>
 	<description>COM_JOMBADGER_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
 	<update>
 		<schemas>
 			<schemapath type="mysql">sql/updates/mysql</schemapath>

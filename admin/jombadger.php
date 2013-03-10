@@ -3,7 +3,7 @@
  * @package   Jombadger
  * @subpackage Components
  * components/com_jombadger/jombadger.php
- * @Copyright Copyright (C) 2012 Alain Bolli
+ * @Copyright Copyright (C) 2012-2013 Alain Bolli
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
 
@@ -17,13 +17,13 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_jombadger'))
 }
 
 // require helper file
-JLoader::register('JomBadgerHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'openbadges.php');
+JLoader::register('JomBadgerHelper', dirname(__FILE__) . '/helpers/openbadges.php');
 
 // import joomla controller library
 jimport('joomla.application.component.controller');
  
 // Get an instance of the controller prefixed by JomBadger
-$controller = JController::getInstance('JomBadger');
+$controller = JControllerLegacy::getInstance('JomBadger');
  
 // Perform the Request task
 $input = JFactory::getApplication()->input;

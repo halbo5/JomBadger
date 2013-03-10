@@ -15,6 +15,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `#__jb_records` (
   `id_record` int(11) NOT NULL AUTO_INCREMENT,
+  `asset_id` INT(10) NOT NULL DEFAULT '0',
   `evidence` varchar(200) NOT NULL COMMENT 'url that can prove badge is earned',
   `recipient` varchar(128) NOT NULL COMMENT 'hashed email',
   `salt` varchar(8) NOT NULL COMMENT 'for email hashing',
@@ -33,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `#__jb_records` (
   `badgeissuercontact` varchar(100) NOT NULL,
   `transfered` BOOLEAN NULL DEFAULT NULL COMMENT '1 if transfered to backpack',
   PRIMARY KEY (`id_record`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='records of earned badges' AUTO_INCREMENT=1 ;
+) DEFAULT CHARSET=utf8 COMMENT='records of earned badges' AUTO_INCREMENT=1 ;
 
 
 
@@ -43,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `#__jb_records` (
 
 CREATE TABLE IF NOT EXISTS `#__jb_badges` (
   `id_badge` int(11) NOT NULL AUTO_INCREMENT,
+  `asset_id` INT(10) NOT NULL DEFAULT '0',
   `name` varchar(128) NOT NULL,
   `image` varchar(255) NOT NULL,
   `description` varchar(128) NOT NULL,
@@ -50,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `#__jb_badges` (
   `expires` DATE NOT NULL,
   `catid` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_badge`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 --
@@ -62,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `#__jb_validated` (
   `usermail` varchar(100) NOT NULL,
   `badgeid` int(11) NOT NULL,
   PRIMARY KEY (`id_validated`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

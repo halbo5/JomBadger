@@ -15,7 +15,11 @@
 		<action name="core.edit.own" title="JACTION_EDITOWN" description="COM_CATEGORIES_ACCESS_EDITOWN_DESC" />
     	</section>
 	<section name="badge">
-		<action name="core.delete" title="JACTION_DELETE" description="COM_HELLOWORLD_ACCESS_DELETE_DESC" />
-		<action name="core.edit" title="JACTION_EDIT" description="COM_HELLOWORLD_ACCESS_EDIT_DESC" />
+		<action name="core.delete" title="JACTION_DELETE" description="COM_JOMBADGER_ACCESS_DELETE_DESC" />
+		<action name="core.edit" title="JACTION_EDIT" description="COM_JOMBADGER_ACCESS_EDIT_DESC" />
+	</section>
+	<section name="record">
+		<action name="core.delete" title="JACTION_DELETE" description="COM_JOMBADGER_ACCESS_DELETE_DESC" />
+		<action name="core.edit" title="JACTION_EDIT" description="COM_JOMBADGER_ACCESS_EDIT_DESC" />
 	</section>
 </access>
