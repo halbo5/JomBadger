@@ -43,7 +43,7 @@ class JomBadgerControllerissuer extends JControllerForm
 	    $sendername=($sendername!="")?$sendername:$config->getValue('config.fromname');
 	    $sendermail=($issuercontact!="")?$issuercontact:$config->getValue('config.mailfrom');
 	    $sender = array($sendermail,$sendername);
-	    $subject=JText::_('COM_JOMBADGER_ISSUER_EMAILSUBJECT')." ".$sendername;
+	    $subject=JText::_('COM_JOMBADGER_ISSUER_EMAILSUBJECT');
 	    $path=JURI::root();
 	    $url=$path."index.php?option=com_jombadger&view=earnbadge&badgeid=".$data['badgeid'];
 	        	

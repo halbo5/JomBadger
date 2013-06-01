@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.modellist' );
 
 
-class JomBadgerModelissued extends JModelList
+class JomBadgerModelIssuerOrganizations extends JModelList
 {
 
 	
@@ -30,10 +30,9 @@ function getListQuery()
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('id_record,earnername,earneremail,#__jb_badges.name as name,badgeissuedon,transfered');
-		$query->from('#__jb_records');
-		$query->leftjoin('#__jb_badges on #__jb_records.badgeid=#__jb_badges.id_badge');
-		$query->order('badgeissuedon DESC');
+		$query->select('id_issuer,issuer_name,issuer_url,issuer_email');
+		$query->from('#__jb_issuer');
+		$query->order('issuer_name');
 		
 		//filter
 		if ($this->getState('filter.search') !== '')
@@ -43,10 +42,8 @@ function getListQuery()
 
 			// Compile the different search clauses.
 			$searches	= array();
-			$searches[]	= '#__jb_records.earnername LIKE '.$token;
-			$searches[]	= '#__jb_records.earneremail LIKE '.$token;
-			$searches[]	= '#__jb_badges.name LIKE '.$token;
-			$searches[]	= '#__jb_records.badgeissuedon LIKE '.$token;
+			$searches[]	= '#__jb_issuer.issuer_name LIKE '.$token;
+			$searches[]	= '#__jb_issuer.issuer_email LIKE '.$token;
 
 			// Add the clauses to the query.
 			$query->where('('.implode(' OR ', $searches).')');
@@ -70,16 +67,19 @@ protected function populateState($ordering = null, $direction = null)
  
 		// List state information.
 		parent::populateState($ordering = null, $direction = null);
-	}		
-		
+	}
 
-	
-	protected function canDelete($record)
+
+	/**
+	 * Method to check if it's OK to delete a badge. Overwrites JModelAdmin::canDelete
+	 */
+protected function canDelete($record)
 	{
 		if( !empty( $record->id ) ){
 			$user = JFactory::getUser();
-			return $user->authorise( "core.delete", "com_jombadger.record." . $record->id );
+			return $user->authorise( "core.delete", "com_jombadger.issuerorganization." . $record->id );
 		}
-	}	
-	
+	}
+		
+
 }

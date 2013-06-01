@@ -23,7 +23,7 @@ defined('_JEXEC') or die('Restricted access');
 			
 		echo "<tr class=\"row$k\"><td>".$row->id_record."</td>";
 		echo "<td>".$row->earnername."</td>";
-		echo "<td>".$row->earneremail."</td><td>".$row->badgename."</td><td>".$row->badgeissuedon."</td>";
+		echo "<td>".$row->earneremail."</td><td>".$row->name."</td><td>".$row->badgeissuedon."</td>";
 		echo "<td>$transmitted</td></tr>";
 		$k=1-$k;	
 	}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addrulepath="/administrator/components/com_jombadger/models/rules"
+	>
+	<fieldset name="issuerorganization">
+		<field
+			name="id_issuer"
+			type="hidden"
+		/>
+		
+		<field
+			name="issuer_name"
+			type="text"
+			label="COM_JOMBADGER_ISSUER_NAME"
+			description="COM_JOMBADGER_ISSUER_NAME_DESC"
+			size="40"
+			maxlenght="150"
+			class="inputbox validate-charsmax"
+			validate="charsmax150"
+			default=""
+			required="true"
+			
+		/>
+		<field
+			name="issuer_description"
+			type="textarea"
+			label="COM_JOMBADGER_ISSUER_DESCRIPTION"
+			description="COM_JOMBADGER_ISSUER_DESCRIPTION_DESC"
+			cols="5"
+			rows="2"
+			class="validate-charsmax"
+			default=""
+			required="false"
+			
+		/>
+		<field
+			name="issuer_url"
+			type="url"
+			filter="url"
+			label="COM_JOMBADGER_ISSUER_URL"
+			description="COM_JOMBADGER_ISSUER_URL_DESC"
+			size="40"
+			maxlenght="150"
+			class="inputbox"
+			default="http://"
+			required="true"
+		/>
+		
+		<field
+			name="issuer_email"
+			type="text"
+			label="COM_JOMBADGER_ISSUER_EMAIL"
+			description="COM_JOMBADGER_ISSUER_EMAIL_DESC"
+			size="70"
+			class="inputbox validate-email"
+			validate="email"
+			default=""
+			required="true"
+			maxlenght="60"
+			
+		/>
+		<field
+			name="issuer_image"
+			type="url"
+			filter="url"
+			label="COM_JOMBADGER_ISSUER_IMAGE"
+			description="COM_JOMBADGER_ISSUER_IMAGE_DESC"
+			size="40"
+			maxlenght="150"
+			class="inputbox"
+			default=""
+			required="false"
+		/>
+		
+	</fieldset>
+	<fieldset name="accesscontrol">
+        <field name="asset_id" type="hidden" filter="unset" />
+        <field name="rules"
+                type="rules"
+                label="JFIELD_RULES_LABEL"
+                translate_label="false"
+                filter="rules"
+                validate="rules"
+                class="inputbox"
+                component="com_jombadger"
+                section="issuerorganization"
+        />
+    </fieldset>
+</form>
+

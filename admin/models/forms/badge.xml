@@ -28,7 +28,7 @@
 			description="COM_JOMBADGER_BADGENAME_DESC"
 			size="40"
 			class="inputbox validate-charsmax"
-			validate="charsmax"
+			validate="charsmax128"
 			default=""
 			required="true"
 			
@@ -53,7 +53,7 @@
 			rows="2"
 			default=""
 			required="true"
-			validate="charsmax"
+			validate="charsmax128"
 			class="validate-charsmax"
 		/>
 		<field
@@ -67,6 +67,18 @@
 			default="http://"
 			required="true"
 		/>
+		<field 
+		    name="issuerid"
+		    type="sql"
+		    label="COM_JOMBADGER_ISSUERORG_LABEL"
+		    query="SELECT id_issuer,issuer_name FROM #__jb_issuer"
+		    key_field="id_issuer"
+		    value_field="issuer_name"
+		    description="COM_JOMBADGER_ISSUERORG_LABEL_DESC"
+		    class="inputbox"
+		    required="true"
+		/>
+		    
 		<field
 			name="expires"
 			type="calendar"
