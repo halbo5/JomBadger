@@ -2,12 +2,12 @@
 <extension type="component" version="2.5" method="upgrade">
 	<name>COM_JOMBADGER</name>
 	<author>Alain Bolli</author>
-	<creationDate>8 january 2013</creationDate>
+	<creationDate>29 may 2013</creationDate>
 	<copyright>Copyright (C) 2012 Alain Bolli. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>alain.bolli@gmail.com</authorEmail>
 	<authorUrl>http://www.bolli.fr</authorUrl>
-	<version>0.950</version>
+	<version>0.99</version>
 	<description>COM_JOMBADGER_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
 	<update>

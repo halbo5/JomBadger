@@ -14,7 +14,7 @@ JHtml::_('behavior.formvalidation');
  
 <form action="<?php echo JRoute::_('index.php?option=com_jombadger&layout=edit&id_badge='.(int) $this->item->id_badge);?>" method="post" name="adminForm" id="badge-form" class="form-validate">
     <fieldset class="adminform">
-        <legend><?php echo JText::_( 'COM_JOMBADGER_DETAILS' ); ?></legend>
+        <legend><?php echo JText::_( 'COM_JOMBADGER_BADGE_DETAILS' ); ?></legend>
         <ul class="adminformlist">
       	<?php
       	foreach($this->form->getFieldset('badge') as $field): 

@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport('joomla.application.component.controller');
 
 
-class JomBadgerController extends JController
+class JomBadgerController extends JControllerLegacy
 {
 	
 	function ajax_transfer_backpack()

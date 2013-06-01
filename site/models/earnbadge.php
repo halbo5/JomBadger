@@ -147,24 +147,24 @@ public function deleteValidated($db,$usermail)
 public function verifBadge($db,$record)
 	{
 		//test if record already exists for this badge and user
-		$id = $this->getBadgeId();
+		//$id = $this->getBadgeId();
 		$query = "SELECT id_record FROM #__jb_records WHERE evidence='".$record['evidence'];
 		$query.=									"' AND earneremail='".$record['earneremail'];
 		$query.=									"' AND earnername='".$record['earnername'];
-		$query.=									"' AND badgename='".$record['badgename'];
-		$query.=									"' AND badgeimage='".$record['badgeimage'];
-		$query.=									"' AND badgedescription='".$record['badgedescription'];
-		$query.=									"' AND badgecriteria='".$record['badgecriteria'];
-		$query.=									"' AND badgeexpires='".$record['badgeexpires'];
-		$query.=									"' AND badgeissuerorigin='".$record['badgeissuerorigin'];
-		$query.=									"' AND badgeissuername='".$record['badgeissuername'];
-		$query.=									"' AND badgeissuerorg='".$record['badgeissuerorg'];
-		$query.=									"' AND badgeissuercontact='".$record['badgeissuercontact']."'";
+		$query.=									"' AND badgeid='".$record['badgeid'];
+		//$query.=									"' AND badgeimage='".$record['badgeimage'];
+		//$query.=									"' AND badgedescription='".$record['badgedescription'];
+		//$query.=									"' AND badgecriteria='".$record['badgecriteria'];
+		$query.=									"' AND badgeexpires='".$record['badgeexpires']."'";
+		//$query.=									"' AND badgeissuerorigin='".$record['badgeissuerorigin'];
+		//$query.=									"' AND badgeissuername='".$record['badgeissuername'];
+		//$query.=									"' AND badgeissuerorg='".$record['badgeissuerorg'];
+		//$query.=									"' AND badgeissuercontact='".$record['badgeissuercontact']."'";
 			
 		$db->setQuery($query);
 		$db->query();
 		$result=$db->loadResult($db);
-		
+		//var_dump($result);exit;
 		return $result;	
 	}
 	
@@ -189,8 +189,8 @@ public function storeBadge($record)
         $this->setError($this->_db->getErrorMsg());
         return false;
     }
- 
-    return true;
+
+    return $row->id_record;
 		
 		
 	}
@@ -198,29 +198,34 @@ public function storeBadge($record)
 public function createJsonArray($db,$id)
 	{
 		//create JSON content for backpack
-		$query = "SELECT * FROM #__jb_records WHERE id_record='$id'";
+		$query = $db->getQuery(true);
+		$query->select('uid,evidence,identity,identity_type,salt,badgeid,badgeexpires,badgeissuedon,verify_type');
+		$query->from('#__jb_records');
+		$query->where('id_record=\''.$id.'\'');
 		$db->setQuery($query);
 		$result=$db->loadAssoc();
+		$path=JURI::base();
+		//var_dump($result);exit;
 		
-		$badge=array();
-		$badge['version']=$result['badgeversion'];
-		$badge['name']=$result['badgename'];
-		$badge['image']=$result['badgeimage'];
-		$badge['description']=$result['badgedescription'];
-		$badge['criteria']=$result['badgecriteria'];
-		$badge['issued_on']=$result['badgeissuedon'];
-		$badge['expires']=$result['badgeexpires'];
-		$badge['issuer']=array(
-						'origin'=>$result['badgeissuerorigin'],
-						'name'=>$result['badgeissuername'],
-						'org'=>$result['badgeissuerorg'],
-						'contact'=>$result['badgeissuercontact']
-						);
+		$recipient=array();
+		$recipient['type']=$result['identity_type'];
+		$recipient['hashed']=true;
+		$recipient['salt']=$result['salt'];
+		$recipient['identity']=$result['identity'];
+		
+		$verify=array();
+		$verify['type']=$result['verify_type'];
+		$verify['url']=$path."index.php?option=com_jombadger&view=earnbadge&format=json&id_record=".$id;
+		
 		$json=array();
-		$json['recipient']=$result['recipient'];
-		$json['salt']=$result['salt'];
+		$json['uid']=$result['uid'];
+		$json['recipient']=$recipient;
 		$json['evidence']=$result['evidence'];
-		$json['badge']=$badge;
+		$json['issuedOn']=$result['badgeissuedon'];
+		$json['expires']=$result['badgeexpires'];
+		$json['badge']=$path."index.php?option=com_jombadger&view=badge&format=json&id_badge=".$result['badgeid'];
+		$json['verify']=$verify;
+		
 		return $json;
 		
 	}
@@ -256,7 +261,7 @@ public function createJavascript($id_record,$recordedBadgeUrl,$badgeName,$recipi
 		return $javascript;
 	}
 	
-public function jqFBplugin($lang)
+public function jqFBplugin($lang) 
 {	
 	
 	$uri =& JURI::getInstance();

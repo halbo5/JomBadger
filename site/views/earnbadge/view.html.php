@@ -30,7 +30,7 @@ class JomBadgerViewearnbadge extends JView
 		$db = $model->connectDB();
 		$userid = $model->getUserId();
 		$user =& JFactory::getUser();
-		$badgeRecipientName=$user->name;
+		$badgeRecipientName=$user->name;// voir si encore utile
         $badgeRecipientEmail=$user->email;
 		$date = date('Y-m-d');
 		$lang =& JFactory::getLanguage();
@@ -58,30 +58,35 @@ class JomBadgerViewearnbadge extends JView
 		//we look for badge's datas
 		$this->badge = ($this->get('badge'))?$this->get('badge'):"";
 		$evidence=$input->get('evidence');
-		$evidence=isset($evidence)?$evidence:"";
+		$evidence=isset($evidence)?$evidence:"";//TODO : seems $evidence is always empty ! Where is the evidence url created ?
 		$id_record=$input->getInt('id_record');
 		$id_record=isset($id_record)?$id_record:"";//is set when we come from mybadges page
 		
-		$date = date('Y-m-d');
+		$date = date('c');
 		$salt=$model->rand_string(8);
 		$hashed_email = hash('sha256', $badgeRecipientEmail  . $salt);
 		$record=array();
-		$record['recipient']="sha256$".$hashed_email;
+		$record['uid']=uniqid();
+		$record['identity']="sha256$".$hashed_email;
+		$record['identity_type']="email";
 		$record['salt']=$salt;
 		$record['earneremail']=$badgeRecipientEmail;
 		$record['evidence']=$evidence;
 		$record['earnername']=$badgeRecipientName;
-		$record['badgeversion']=$params->get('version');
-		$record['badgename']=$this->badge->name;
-		$record['badgeimage']=$this->badge->image;
-		$record['badgedescription']=$this->badge->description;
-		$record['badgecriteria']=$this->badge->criteria_url;
+		$record['badgeid']=$this->badge->id_badge;
+		//$record['badgeversion']=$params->get('version');
+		//$record['badgename']=$this->badge->name;
+		//$record['badgeimage']=$this->badge->image;
+		//$record['badgedescription']=$this->badge->description;
+		//$record['badgecriteria']=$this->badge->criteria_url;
 		$record['badgeexpires']=$this->badge->expires;
 		$record['badgeissuedon']=$date;
-		$record['badgeissuerorigin']=$params->get('issuerurl');
-		$record['badgeissuername']=$params->get('issuername');
-		$record['badgeissuerorg']=$params->get('issuerorg');
-		$record['badgeissuercontact']=$params->get('issuercontact');
+		//$record['badgeissuerorigin']=$params->get('issuerurl');
+		//$record['badgeissuername']=$params->get('issuername');
+		//$record['badgeissuerorg']=$params->get('issuerorg');
+		//$record['badgeissuercontact']=$params->get('issuercontact');
+		$record['verify_type']="hosted";//TODO : could also be signed
+		//$record['verify_url']="";
 		
 							
 		//test if badge is validated for current user
@@ -94,11 +99,10 @@ class JomBadgerViewearnbadge extends JView
 			{
 				//action to win badge is validated
 				
-				//store result of badge won in ob_records table
+				//store result of badge won in jb_records table
 				
 				//first we test if badge is not already recorded for this user
 				$verif=$model->verifBadge($db,$record);
-				
 				if ($verif=="" && $id_record=="")
 					{//if function does not return value, record does not exist
 					$store=$model->storeBadge($record);
@@ -112,12 +116,12 @@ class JomBadgerViewearnbadge extends JView
 					{
 						//delete proof of action validated in jb_validated
 						//var_dump($db->insertid());var_dump($id_record);
-						$id_record=($id_record)?$id_record:$db->insertid();
+						$id_record=($id_record)?$id_record:$store;
 						$delete_validated=$model->deleteValidated($db,$badgeRecipientEmail);
 						
 						//var_dump($id_record);echo "<br>";
 						
-						$recordedBadgeUrl=$path."index.php?option=com_jombadger&view=earnbadge&debug=true&format=json&id=".$id_record;
+						$recordedBadgeUrl=$path."index.php?option=com_jombadger&view=earnbadge&debug=true&format=json&id_record=".$id_record;
 						
 						//var_dump($recordedBadgeUrl);
 						

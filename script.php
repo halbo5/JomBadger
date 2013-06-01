@@ -63,9 +63,37 @@ class com_jombadgerInstallerScript
          * If this returns false, Joomla will abort the update and undo everything already done.
          */
         function update( $parent ) {
-                
-                // You can have the backend jump directly to the newly updated component configuration page
-                $parent->getParent()->setRedirectURL('index.php?option=com_jombadger');
+
+        	$this->release = $parent->get( "manifest" )->version;
+            if ($this->release=="0.99")
+            	{
+        		//search issuer datas in parameters and add in new table #__jb_issuer
+        		$db = JFactory::getDbo();
+  				$db->setQuery('SELECT params FROM #__extensions WHERE name = "com_jombadger"');
+  				$params = json_decode( $db->loadResult(), true );
+        		$issuer->url=$params['issuerurl'];
+        		$issuer->name=$params['issuerorg'];
+        		$issuer->mail=$params['issuercontact'];
+
+        		//add in database
+        		$query = $db->getQuery(true);
+        		$columns = array('issuer_name', 'issuer_url', 'issuer_email');
+        		$values = array($db->quote($issuer->name), $db->quote($issuer->url),$db->quote($issuer->mail));
+        		$query
+        		->insert($db->quoteName('#__jb_issuer'))
+        		->columns($db->quoteName($columns))
+        		->values(implode(',', $values));
+        		$db->setQuery($query);
+        		
+        		try {
+        			// Execute the query in Joomla 2.5. change with $db->execute() in joomla 3
+        			$result = $db->query();
+        			} catch (Exception $e) {
+        			// catch any database errors.
+        			}   	
+            	}
+        	// You can have the backend jump directly to the newly updated component configuration page
+            $parent->getParent()->setRedirectURL('index.php?option=com_jombadger');
         }
  
         /*

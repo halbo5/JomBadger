@@ -29,7 +29,7 @@ class JomBadgerViewearnbadge extends JView
 		//$path=JURI::base();
 		$app=&JFactory::getApplication('site');
         $input = $app->input;
-        $id=$input->getInt('id');
+        $id=$input->getInt('id_record');
         $jsonArray=$model->createJsonArray($db,$id);
         $json=json_encode($jsonArray);
         $json=stripslashes($json);

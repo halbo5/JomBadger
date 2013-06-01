@@ -2,11 +2,13 @@
 <config>
 <fieldset name="jombadger" label="COM_JOMBADGER_LABEL_CONFIG" description="COM_JOMBADGER_DESC_CONFIG">
     <field type="text" name="apiurl" size="40" label="COM_JOMBADGER_LABEL_APIURL" description="COM_JOMBADGER_DESC_APIURL" default="http://beta.openbadges.org/issuer.js" />
-    <field type="text" name="version" size="6" label="COM_JOMBADGER_LABEL_VERSION" description="COM_JOMBADGER_DESC_VERSION" default="0.5.0" />
-	<field type="text" name="issuerurl" size="40" label="COM_JOMBADGER_LABEL_ISSUERURL" description="COM_JOMBADGER_DESC_ISSUERURL" default="" />
+    <field type="hidden" name="version" size="6" label="COM_JOMBADGER_LABEL_VERSION" description="COM_JOMBADGER_DESC_VERSION" default="0.5.0" />
+</fieldset>
+<fieldset name="notification" label="COM_JOMBADGER_LABEL_NOTIFICATION" description="COM_JOMBADGER_DESC_NOTIFICATION">
 	<field type="text" name="issuername" size="40" label="COM_JOMBADGER_LABEL_ISSUERNAME" description="COM_JOMBADGER_DESC_ISSUERNAME" default="" />
 	<field type="text" name="issuerorg" size="40" label="COM_JOMBADGER_LABEL_ISSUERORG" description="COM_JOMBADGER_DESC_ISSUERORG" default="" />
     <field type="text" name="issuercontact" size="40" label="COM_JOMBADGER_LABEL_ISSUERCONTACT" description="COM_JOMBADGER_DESC_ISSUERCONTACT" default="" />
+    <field type="text" name="issuerurl" size="40" label="COM_JOMBADGER_LABEL_ISSUERURL" description="COM_JOMBADGER_DESC_ISSUERURL" default="" />
 </fieldset>
 <fieldset name="facebook" label="COM_JOMBADGER_LABEL_FACEBOOK" description="COM_JOMBADGER_DESC_FACEBOOK">
 	<field name="appid" type="text"

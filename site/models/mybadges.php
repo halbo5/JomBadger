@@ -45,10 +45,11 @@ function getBadgesIssued($mail)
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('*');
+		$query->select('id_record,badgeid,badgeissuedon,image,name,description,criteria_url,transfered');
 		$query->from('#__jb_records');
+		$query->leftjoin('#__jb_badges on badgeid=#__jb_badges.id_badge');
 		$query->where('earneremail=\''.$mail.'\'');
-		$query->order('badgename');
+		$query->order('name');
 		$db->setQuery((string)$query);
 		$badges = $db->loadObjectList();
 		return $badges;
