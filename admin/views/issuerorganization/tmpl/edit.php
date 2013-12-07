@@ -9,33 +9,34 @@
 defined('_JEXEC') or die('Restricted access');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
+JHtml::_('formbehavior.chosen', 'select');
 
 ?>
- <?php if (!empty( $this->sidebar)) : ?>
-	<div id="j-sidebar-container" class="span2">
-		<?php echo $this->sidebar; ?>
-	</div>
-	<div id="j-main-container" class="span10">
-<?php else : ?>
-	<div id="j-main-container">
-<?php endif;?> 
+
 <form action="<?php echo JRoute::_('index.php?option=com_jombadger&layout=edit&id_issuer='.(int) $this->item->id_issuer);?>" method="post" name="adminForm" id="adminForm" class="form-validate">
-    <fieldset class="adminform">
+    <?php echo JLayoutHelper::render('joomla.edit.item_title', $this); ?>
+    <div class="row-fluid">
+    <div class="span10 form-horizontal">
+    <fieldset>
         <legend><?php echo JText::_( 'COM_JOMBADGER_ISSUER_DETAILS' ); ?></legend>
-        <ul class="adminformlist">
+        
       	<?php
-      	foreach($this->form->getFieldset('issuerorganization') as $field): 
-        echo "<li>".$field->label;echo $field->input."</li>";
+      	foreach($this->form->getFieldset('issuerorganization') as $field):?> 
+        <div class="control-group">
+      		<div class="control-label"><?php echo $field->label;?></div>
+      		<div class="controls"><?php	echo $field->input;?></div>
+      	</div>
+      	<?php
 		endforeach;
 		?>
-		</ul>
+		
     </fieldset>
     
-  <!-- begin ACL definition-->
+  <!-- begin ACL definition
  
    <div class="clr"></div>
  
-   <?php if ($this->canDo->get('core.admin')): ?>
+   <?php /*if ($this->canDo->get('core.admin')): ?>
       <div class="width-100 fltlft">
          <?php echo JHtml::_('sliders.start', 'permissions-sliders-'.$this->item->id, array('useCookie'=>1)); ?>
  
@@ -47,7 +48,7 @@ JHtml::_('behavior.formvalidation');
  
          <?php echo JHtml::_('sliders.end'); ?>
       </div>
-   <?php endif; ?>
+   <?php endif;*/ ?>
  
    <!-- end ACL definition-->  
  
@@ -55,5 +56,5 @@ JHtml::_('behavior.formvalidation');
  
 <input type="hidden" name="task" value="issuerorganization.edit" />
 <?php echo JHtml::_('form.token'); ?>
-</div>
-</form></div>
+</div></div></div>
+</form>

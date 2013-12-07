@@ -28,7 +28,6 @@ JHtml::_('formbehavior.chosen', 'select');
       	<?php
 		endforeach;
 		?>
-		</ul>
     </fieldset>
   
     
