@@ -10,13 +10,21 @@ defined('_JEXEC') or die('Restricted access');
 JHtml::_('behavior.tooltip');
 
 ?>
- 
-<form action="<?php echo JRoute::_('index.php?option=com_jombadger');?>" method="post" name="adminForm" id="badge-form" class="form-validate">
+<?php if (!empty( $this->sidebar)) : ?>
+	<div id="j-sidebar-container" class="span2">
+		<?php echo $this->sidebar; ?>
+	</div>
+	<div id="j-main-container" class="span10">
+<?php else : ?>
+	<div id="j-main-container">
+<?php endif;?> 
+
+<form action="<?php echo JRoute::_('index.php?option=com_jombadger');?>" method="post" name="adminForm" id="adminForm" class="form-validate">
     <?php 
     echo "<h1>".JText::_("COM_JOMBADGER_MYBADGE_CANWINABADGE")."</h1>";
     echo "<p>".JText::_("COM_JOMBADGER_MYBADGE_CANWININSTALLED")."</p>";
     ?>
-    <fieldset class="adminform">
+    <fieldset>
         <legend><?php echo JText::_( 'COM_JOMBADGER_MYBADGE_DETAILS' ); ?></legend>
         <?php 
         
@@ -28,9 +36,9 @@ JHtml::_('behavior.tooltip');
         echo "<li class='jb_tick".$this->testBadge['badges']."'>".JText::_("COM_JOMBADGER_MYBADGE_CREATE_BADGES")."</li>";
         echo "<li class='jb_tick".$this->testBadge['plugin']."'>".JText::_("COM_JOMBADGER_MYBADGE_INSTALL_PLUGIN")."</li>";
         echo "<li class='jb_tick".$this->testBadge['records']."'>".JText::_("COM_JOMBADGER_MYBADGE_TEST_BADGE")."</li>";
-        echo "</ul>";
-    echo "</fieldset>";
-    if ($this->testBadge['total']==5)
+        echo "</ul>";?>
+    </fieldset>"
+    <?php if ($this->testBadge['total']==5)
     	{
     		echo "<p class='jb_congratulations'>".JText::_("COM_JOMBADGER_MYBADGE_TESTOK")."</p>";
     		echo "<p class='jb_button'><a href='http://www.bolli.fr/index.php?option=com_jombadger&view=earnbadge&badgeid=9'>".JText::_("COM_JOMBADGER_MYBADGE_EARNIT")."</a></p>";
@@ -44,4 +52,4 @@ JHtml::_('behavior.tooltip');
 <input type="hidden" name="task" value="" />
 <?php echo JHtml::_('form.token'); ?>
 </div>
-</form>
+</form></div>

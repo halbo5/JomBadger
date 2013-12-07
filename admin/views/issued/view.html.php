@@ -29,6 +29,9 @@ class JomBadgerViewissued extends JViewLegacy
 	$this->pagination = $this->get('Pagination');
 	//filter
 	$this->state		= $this->get('State');
+	
+	JombadgerHelper::addSubmenu('jombadger');
+	
     $this->assignRef('userid', $userid);
     // What Access Rights does this user have? What can (s)he do?
 	$this->canDo = JomBadgerHelper::getActions();
@@ -37,6 +40,7 @@ class JomBadgerViewissued extends JViewLegacy
   
     // Set the toolbar
 	$this->addToolBar();
+	$this->sidebar = JHtmlSidebar::render();
     
     parent::display($tpl);
     

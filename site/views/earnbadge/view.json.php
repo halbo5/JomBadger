@@ -17,7 +17,7 @@ jimport( 'joomla.application.component.view');
  * JSON View class for the openbadges Component : url for backpack
  */
 
-class JomBadgerViewearnbadge extends JView
+class JomBadgerViewearnbadge extends JViewLegacy
 {
 	
 

@@ -66,7 +66,7 @@ class Tablejb_badges extends JTable
     	{
     		// Convert the params field to a registry.
     		$params = new JRegistry;
-    		$params->loadJSON($this->params);
+    		$params->loadString($params,'JSON');//avant il y avait $this->params à la place de $params
     		$this->params = $params;
     		return true;
     	}

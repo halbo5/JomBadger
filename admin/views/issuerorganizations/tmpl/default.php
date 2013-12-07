@@ -10,7 +10,9 @@
 defined('_JEXEC') or die('Restricted access'); 
 
 //adding tooltip
-JHtml::_('behavior.tooltip');
+JHtml::_('bootstrap.tooltip');
+JHtml::_('behavior.multiselect');
+JHtml::_('formbehavior.chosen', 'select');
 
 $userid=$this->userid;
 //$items=$this->items;
@@ -23,21 +25,34 @@ $userid=$this->userid;
 			return;
 		}
 ?>
+
+<?php if (!empty( $this->sidebar)) : ?>
+	<div id="j-sidebar-container" class="span2">
+		<?php echo $this->sidebar; ?>
+	</div>
+	<div id="j-main-container" class="span10">
+<?php else : ?>
+	<div id="j-main-container">
+<?php endif;?> 
+
+<form action="<?php echo JRoute::_('index.php?option=com_jombadger'); ?>" method="post" name="adminForm" id="adminForm">
 <?php 		
 echo "<br /><h1>".JTEXT::_("COM_JOMBADGER_LIST_ISSUER_ORGANIZATIONS")."</h1>";
 echo "<p>".JTEXT::_("COM_JOMBADGER_TEXT_BEFORE_TABLE_ISSUER_ORGANIZATIONS")."</p>";
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_jombadger'); ?>" method="post" name="adminForm" id=adminForm>
-<fieldset id="filter-bar">
-<div class="filter-search fltlft">
-	<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
+<div id="filter-bar" class="btn-toolbar">
+<div class="filter-search btn-group pull-left">
+	<label class="element-invisible" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
 	<input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo JText::_('COM_MYCOMPANY_SEARCH_IN_TITLE'); ?>" />
-	<button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
-	<button type="button" onclick="document.id('filter_search').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
 </div>
-</fieldset>
+<div class="btn-group pull-left">
+	<button type="submit" class="btn"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+	<button type="button" class="btn" onclick="document.id('filter_search').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
+</div>
+	</div>
+
 	<div class="clr"> </div>
-<table class="adminlist">
+<table class="table table-striped">
 <thead><?php echo $this->loadTemplate('head');?></thead>
 <tbody><?php echo $this->loadTemplate('body');?></tbody>
 <tfoot><?php echo $this->loadTemplate('foot');?></tfoot>
@@ -47,4 +62,4 @@ echo "<p>".JTEXT::_("COM_JOMBADGER_TEXT_BEFORE_TABLE_ISSUER_ORGANIZATIONS")."</p
 <input type="hidden" name="boxchecked" value="0" />
 <?php //<input type="hidden" name="controller" value="badge" />?>
 <?php echo JHtml::_('form.token'); ?>
-</form>
+</form></div>

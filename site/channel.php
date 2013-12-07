@@ -1,4 +1,14 @@
 <?php
+/**
+ * @package   Jombadger
+ * @subpackage Components
+ * components/com_jombadger/jombadger.php
+ * @Copyright Copyright (C) 2012 Alain Bolli
+ * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ ******/
+define('_JEXEC',1);
+defined('_JEXEC') or die('Restricted access');
+
  $cache_expire = 60*60*24*365;
  header("Pragma: public");
  header("Cache-Control: max-age=".$cache_expire);

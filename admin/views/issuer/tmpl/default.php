@@ -9,24 +9,36 @@
 defined('_JEXEC') or die('Restricted access');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
+JHtml::_('formbehavior.chosen', 'select');
 
 ?>
- 
-<form action="<?php echo JRoute::_('index.php?option=com_jombadger');?>" method="post" name="adminForm" id="issuer-form" class="form-validate">
-   <?php echo "<p>".JText::_('COM_JOMBADGER_ISSUER_INTROTEXT')."</p>"; ?>
-    <fieldset class="adminform">
-        <ul class="adminformlist">
+<?php if (!empty( $this->sidebar)) : ?>
+	<div id="j-sidebar-container" class="span2">
+		<?php echo $this->sidebar; ?>
+	</div>
+	<div id="j-main-container" class="span10">
+<?php else : ?>
+	<div id="j-main-container">
+<?php endif;?> 
+
+<form action="<?php echo JRoute::_('index.php?option=com_jombadger');?>" method="post" name="adminForm" id="adminForm" class="form-validate">
+   <?php echo "<p>".JText::_('COM_JOMBADGER_ISSUER_INTROTEXT').".</p>"; ?>
+    <div class="row-fluid">
+    <div class="span10 form-horizontal">
+    <fieldset>
+        <div class="control-group">
       	<?php
       	foreach($this->form->getFieldset() as $field): 
-        echo "<li>".$field->label;echo $field->input."</li>";
+        echo "<div class='control-label'>".$field->label."</div>";
+      	echo "<div class='controls'>".$field->input."</div>";
 		endforeach;
 		?>
-		</ul>
+		</div>
 </fieldset>
- 
-<div>
+</div>
+</div>
  
 <input type="hidden" name="task" value="" />
 <?php echo JHtml::_('form.token'); ?>
-</div>
 </form>
+</div></div>

@@ -67,7 +67,7 @@ class Tablejb_records extends JTable
     	{
     		// Convert the params field to a registry.
     		$params = new JRegistry;
-    		$params->loadJSON($this->params);
+    		$params->loadString($this->params);
     		$this->params = $params;
     		return true;
     	}
@@ -115,7 +115,7 @@ class Tablejb_records extends JTable
     	$assetParentId = $assetParent->getRootId();
     
     	// Find the parent-asset
-    	if (($this->catid)&& !empty($this->catid))
+    	if (($catid)&& !empty($catid))
     	{
     		// The item has a category as asset-parent
     		$assetParent->loadByName('com_jombadger.category.' . (int) $this->catid);

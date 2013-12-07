@@ -1,4 +1,12 @@
 <?php
+/**
+ * @package   Jombadger
+ * @subpackage Components
+ * components/com_jombadger/jombadger.php
+ * @Copyright Copyright (C) 2013 Alain Bolli
+ * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ ******/
+
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
  

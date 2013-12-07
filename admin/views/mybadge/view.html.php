@@ -25,7 +25,7 @@ class JomBadgerViewmybadge extends JViewLegacy
 {
     
     $component = &JComponentHelper::getComponent('com_jombadger');
-	$params = new JParameter($component->params);
+	$params = new JRegistry;
     $params->loadString($component->params);
 	
     
@@ -33,11 +33,13 @@ class JomBadgerViewmybadge extends JViewLegacy
 	$testBadge=$model->testBadge($params);
 	
 	$this->testBadge=$testBadge;
+	JombadgerHelper::addSubmenu('jombadger');
 	
     // What Access Rights does this user have? What can (s)he do?
 	$this->canDo = JomBadgerHelper::getActions();
     
     $this->addToolBar();
+    $this->sidebar = JHtmlSidebar::render();
  
     parent::display($tpl);
     

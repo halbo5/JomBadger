@@ -41,7 +41,7 @@ function getUserId()
 
 function rand_string( $length ) { //this function just obscures the users name and badge in the url get string 
 	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	
+	$str="";
 	$size = strlen( $chars );
 	for( $i = 0; $i < $length; $i++ ) {
 		$str .= $chars[ rand( 0, $size - 1 ) ];
@@ -232,6 +232,7 @@ public function createJsonArray($db,$id)
 
 public function createJavascript($id_record,$recordedBadgeUrl,$badgeName,$recipientName)
 	{
+		$path=JURI::base();
 		//create the javascript for contacting openbadges api
 		$javascript="jQuery.noConflict();";
 		$javascript.="jQuery(document).ready(function($) {";

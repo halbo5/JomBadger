@@ -33,7 +33,7 @@ class JomBadgerControllerissuer extends JControllerForm
     	$data           = JRequest::getVar('jform', array(), 'post', 'array');
     	$config =& JFactory::getConfig();
     	$component = &JComponentHelper::getComponent('com_jombadger');
-		$params = new JParameter($component->params);
+		$params = new JRegistry;
     	$params->loadString($component->params);
     	$issuerurl=$params->get('issuerurl');
     	$issuername=$params->get('issuername');
@@ -45,7 +45,7 @@ class JomBadgerControllerissuer extends JControllerForm
 	    $sender = array($sendermail,$sendername);
 	    $subject=JText::_('COM_JOMBADGER_ISSUER_EMAILSUBJECT');
 	    $path=JURI::root();
-	    $url=$path."index.php?option=com_jombadger&view=earnbadge&badgeid=".$data['badgeid'];
+	    $url=$path."index.php?option=com_jombadger&view=earnbadge&badgeid=".$data['badgeid']."&email=".$data['usermail'];
 	        	
 	    //create mail body message
 	    $message="<p>".JTEXT::_("COM_JOMBADGER_ISSUER_HELLO").",</p>";

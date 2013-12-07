@@ -2,12 +2,12 @@
 <extension type="component" version="2.5" method="upgrade">
 	<name>COM_JOMBADGER</name>
 	<author>Alain Bolli</author>
-	<creationDate>29 may 2013</creationDate>
+	<creationDate>3 november 2013</creationDate>
 	<copyright>Copyright (C) 2012 Alain Bolli. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>alain.bolli@gmail.com</authorEmail>
 	<authorUrl>http://www.bolli.fr</authorUrl>
-	<version>0.99</version>
+	<version>1.0</version>
 	<description>COM_JOMBADGER_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
 	<update>
@@ -40,6 +40,10 @@
 		<filename>index.html</filename>
 		<folder>images</folder>
 	</media>
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/en-GB.com_jombadger.ini</language>
+		<language tag="fr-FR">language/fr-FR/fr-FR.com_jombadger.ini</language>
+	 </languages>
 	<administration>
 	  <menu link="option=com_jombadger" img="../media/com_jombadger/images/icon16.png">COM_JOMBADGER_MENU</menu>
 	  <languages folder="admin">

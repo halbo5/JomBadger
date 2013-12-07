@@ -36,6 +36,7 @@ class JomBadgerViewissuer extends JViewLegacy
 	$this->canDo = JomBadgerHelper::getActions();
     
     $this->addToolBar();
+    $this->sidebar = JHtmlSidebar::render();
  
     parent::display($tpl);
     
@@ -51,6 +52,8 @@ protected function addToolBar()
 	$input->set('hidemainmenu', true);
 	$user = JFactory::getUser();
 	$userId = $user->id;
+	
+	$bar = JToolBar::getInstance('toolbar');
 		
     JToolBarHelper::title(JText::_( 'COM_JOMBADGER_ISSUER_TITLE' ),'jombadger');
     //check the create permission
@@ -60,7 +63,8 @@ protected function addToolBar()
     		JToolBarHelper::save('issuer.save', 'JTOOLBAR_SAVE');
     	}	
     	JToolBarHelper::cancel('issuer.cancel', 'JTOOLBAR_CLOSE');
-    
+
+    JHtmlSidebar::setAction('index.php?option=com_jombadger&view=issuer');
 }
 
 protected function setDocument() 

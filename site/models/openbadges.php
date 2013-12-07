@@ -15,7 +15,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.model' );
 
 
-class JomBadgerModelopenbadges extends JModel
+class JomBadgerModelopenbadges extends JModelLegacy
 {
 	
 	

@@ -11,8 +11,15 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 
 ?>
- 
-<form action="<?php echo JRoute::_('index.php?option=com_jombadger&layout=edit&id_issuer='.(int) $this->item->id_issuer);?>" method="post" name="adminForm" id="badge-form" class="form-validate">
+ <?php if (!empty( $this->sidebar)) : ?>
+	<div id="j-sidebar-container" class="span2">
+		<?php echo $this->sidebar; ?>
+	</div>
+	<div id="j-main-container" class="span10">
+<?php else : ?>
+	<div id="j-main-container">
+<?php endif;?> 
+<form action="<?php echo JRoute::_('index.php?option=com_jombadger&layout=edit&id_issuer='.(int) $this->item->id_issuer);?>" method="post" name="adminForm" id="adminForm" class="form-validate">
     <fieldset class="adminform">
         <legend><?php echo JText::_( 'COM_JOMBADGER_ISSUER_DETAILS' ); ?></legend>
         <ul class="adminformlist">
@@ -49,4 +56,4 @@ JHtml::_('behavior.formvalidation');
 <input type="hidden" name="task" value="issuerorganization.edit" />
 <?php echo JHtml::_('form.token'); ?>
 </div>
-</form>
+</form></div>

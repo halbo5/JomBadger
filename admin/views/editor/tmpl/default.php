@@ -8,11 +8,22 @@
  ******/
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
-JHTML::_('behavior.tooltip');
+JHtml::_('bootstrap.tooltip');
+JHtml::_('behavior.multiselect');
+JHtml::_('formbehavior.chosen', 'select');
 jimport('joomla.html.pane');
 
+$userid=$this->userid;
 
+// Must be logged in
+if ($userid < 1) {
+	//JError::raiseError( 403, JText::_('ALERTNONAUTH') );
+	return;
+}
 ?>
+
+
+
 
 <script type="text/javascript">
 	function submitbutton(pressbutton) {alert('save language');
@@ -46,7 +57,15 @@ function lFilter(){
 	
 }
 </script>
-<form  method="post" action="<?php echo JRoute::_('index.php?option=com_jombadger'); ?>" name="adminForm">
+<?php if (!empty( $this->sidebar)) : ?>
+	<div id="j-sidebar-container" class="span2">
+		<?php echo $this->sidebar; ?>
+	</div>
+	<div id="j-main-container" class="span10">
+<?php else : ?>
+	<div id="j-main-container">
+<?php endif;?> 
+<form  method="post" action="<?php echo JRoute::_('index.php?option=com_jombadger'); ?>" name="adminForm" id="adminForm">
 <fieldset><legend><?php echo JText::_('COM_JOMBADGER_LANGUAGE_SELECT'); ?></legend>
 <select name="mlanguage" id="mlanguage" style="width: 200px;">
 			<option value="" selected="">-- <?php echo JText::_('COM_JOMBADGER_LANGUAGE'); ?> --</option>
@@ -93,4 +112,4 @@ if($this->openlang=='' && $this->openfile=='')
 <!--  <input type="hidden" name="view" value="editor" /> -->
 <input type="hidden" name="task" value="" />
 <?php echo JHTML::_( 'form.token' ); ?>
-</form>
+</form></div>

@@ -15,25 +15,21 @@ $store=$this->store;
 $userid=$this->userid;
 $criteria_url=$this->criteria_url;
 $id_record=$this->id_record;
+$badgeRecipientEmail=$this->badgeRecipientEmail;
+$badgeRecipientName=$this->badgeRecipientName;
+$badgeid=$this->badgeid;
+$submit=$this->submit;
 
-If ($userid<1)
+If ($userid<1 && $badgeRecipientEmail=='')
 {
 		//Have to be connected to read the page
 		echo "<h2>".JText::_("COM_JOMBADGER_EARNBADGE_NOTCONNECTED")."</h2>";
 		return;
 }
 
-/*
-$titre_page=$this->titre_page;
-$couleur_bordure=$this->couleur_bordure;
-$couleur_fond=$this->couleur_fond;
-$pub_developpeur=$this->pub_developpeur;
-$gratuit=$this->gratuit;
-$connecte=$this->connecte;
-*/
-
 ?>
 <script>
+//facebook plugin
 $j=jQuery.noConflict();
 $j(document).ready(function($) {
   // Add the function to run after FB is initialized
@@ -125,41 +121,52 @@ function showLoader(status){
 <?php 
 
 
-echo "<h1>$titre_page</h1>";
-echo "<p>$text_before</p>";
-echo "<br />";
 
-if ($validated=="0" && $id_record=="" )
+
+if ($validated=="" && $id_record=="" )
 	{
 		//no validated action to receive a badge
 		echo "<p>".JTEXT::_('COM_JOMBADGER_TEXT_NOTVALIDATED')."</p>";
 		echo "<p>".JTEXT::_("COM_JOMBADGER_TEXT_KNOWMORE")." :</p>";
-		echo "<p><a href='".$criteria_url."'>".JText::_('COM_JOMBADGER_CONTINUE')."</a></p>";
+		echo "<p><a href='".$criteria_url."'>".JText::_('COM_JOMBADGER_GOTOCRITERIA')."</a></p>";
 	}
 else {
 		//action to receive badge validated, we can continue
 
-		if ($store)
-			{
 				//badge has been created for earner
 				echo "<h3>".JText::_( 'COM_JOMBADGER_BADGE_STORE_OK' )."</h3>";
-				echo "<p>".JText::_('COM_JOMBADGER_BADGE_SENDTO_BACKPACK')."</p>";
-				echo "<div class='backPackLink'>".JText::_('COM_JOMBADGER_CONTINUE')."</div>";
-				//echo "<p><a href=''>".JText::_('COM_JOMBADGER_CONTINUE')."</a></p>";
-			?>
-				<div id="badge-error"><?php echo JText::_('COM_JOMBADGER_TRANSFER_ERROR');?></div>
-				<div id="errMsg"></div>
-				<div id="badgeSuccess"><?php echo JText::_('COM_JOMBADGER_TRANSFER_SUCCESS');?></div>
-			
-			
+				echo "<p>".JText::_('COM_JOMBADGER_BADGE_SENDTO_BACKPACK').".</p>";
 				
-				<?php //if facebook appid is in parameters, we display a button to post to wall
+				$link=JURI::base()."index.php?option=com_jombadger&view=earnbadge";
+				echo "<form action='".$link."' method='post'>";
+				echo "<p>".JText::_('COM_JOMBADGER_EARNBADGE_NAME')." : <input type='text' name='name' value='".$badgeRecipientName."' />".JText::_('COM_JOMBADGER_EARNBADGE_EMAIL')." :<input type='text' name='email' value='".$badgeRecipientEmail."' />";
+				echo "<input type='hidden' name='badgeid' value='".$badgeid."' />";
+				echo "<input type='hidden' name='id_record' value='".$id_record."' />";
+				echo "<input type='hidden' name='store' value='".$store."' />";
+				echo "<input type='hidden' name='validated' value='1' />";
+				echo "<input type='submit' name='submit' value='".JText::_('COM_JOMBADGER_EARNBADGE_MODIFIER')."' />.</p>";
+				echo "</form>";
+				if ($submit!="" && $store!="")
+					{
+					echo "<div class='backPackLink'>".JText::_('COM_JOMBADGER_CONTINUE')."</div>";
+					//echo "<p><a href=''>".JText::_('COM_JOMBADGER_CONTINUE')."</a></p>";
+					?>
+					<div id="badge-error"><?php echo JText::_('COM_JOMBADGER_TRANSFER_ERROR');?></div>
+					<div id="errMsg"></div>
+					<div id="badgeSuccess"><?php echo JText::_('COM_JOMBADGER_TRANSFER_SUCCESS');?></div>
+					<?php
+					}
+				elseif ($submit!="" && $store=="") {
+						echo "<p>".JText::_('COM_JOMBADGER_BADGE_STORE_ERROR')."</p>";
+					}
+				
+				//if facebook appid is in parameters, we display a button to post to wall
 				if ($this->appid!="")
 					{
 					?>
 				<p><a class="jb_facebook" onclick='showStream(); return false;'><?php echo JText::_('COM_JOMBADGER_POSTTOFEED');?></a></p>
     			<p id='msg'></p>
-    			<p id='loader'><?php echo JText::_('COM_JOMBADGER_FACEBOOKONSCREEN');?></p>
+    			<p id='loader'><?php //echo JText::_('COM_JOMBADGER_FACEBOOKONSCREEN');?></p>
 
    				<!-- <script> 
    				
@@ -172,18 +179,6 @@ else {
 			      }
 			    
 			    </script>-->
-			<?php }//end facebook button
-			}
-		else {
-			echo "<p>".JText::_('COM_JOMBADGER_BADGE_STORE_ERROR')."</p>";
-		}
-		
-		
-		
+			<?php }//end facebook button		
 	}
-	
-
-if ($pub_developpeur=="yes") {
-echo "<br /><p class='mzd_petit'>".JTEXT::_("COM_MUZEEDEDI_DEVELOPPE_PAR")." <a href='http://www.cdprof.com'>cdprof.com</a> ".JTEXT::_("COM_MUZEEDEDI_POUR_RADIO")." <a href='http://www.muzeeli.fr'>Muzeeli</a></p>";
- }
  ?>

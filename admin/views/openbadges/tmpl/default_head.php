@@ -11,8 +11,8 @@ defined('_JEXEC') or die('Restricted access');
  ?>
 
 <tr>
-<th width="20">
-    <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->items ); ?>);" />
+<th width="1%" class="hidden-phone">
+    <?php echo JHtml::_('grid.checkall'); ?>
 </th>
 <th width="20">Id</th><th><?php echo JTEXT::_("COM_JOMBADGER_BADGEIMAGE");?></th><th><?php echo JTEXT::_("COM_JOMBADGER_BADGENAME"); ?></th>
 <th><?php echo JTEXT::_("COM_JOMBADGER_BADGECATEGORY"); ?></th>

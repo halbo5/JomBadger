@@ -15,7 +15,7 @@ jimport( 'joomla.application.component.view');
 
 
 
-class JomBadgerViewmybadges extends JView
+class JomBadgerViewmybadges extends JViewLegacy
 {
 	
 

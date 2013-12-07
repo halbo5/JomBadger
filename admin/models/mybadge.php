@@ -65,6 +65,7 @@ public function testBadge($params)
 		$test['plugin']=($rowsplugin>0)?1:0;
 		
 		//total of values in array to know if badge earned
+		$total="";
 		foreach ($test as $value)
 			{
 			$total+=$value;

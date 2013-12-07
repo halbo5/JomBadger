@@ -15,35 +15,36 @@ abstract class JomBadgerHelper
 	/**
 	 * Configure the Linkbar.
 	 */
-	public static function addSubmenu($submenu) 
+	public static function addSubmenu($vName="jombadger") 
 	{
-		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_BADGES'),
-		                         'index.php?option=com_jombadger', $submenu == 'badges');
-		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_ISSUER'),
-		                         'index.php?option=com_jombadger&view=issuer', $submenu == 'issuer');
+		JHtmlSidebar::addEntry(JText::_('COM_JOMBADGER_SUBMENU_BADGES'),
+		                         'index.php?option=com_jombadger&view=openbadges', $vName == 'openbadges');
+		JHTMLSidebar::addEntry(JText::_('COM_JOMBADGER_SUBMENU_ISSUER'),
+		                         'index.php?option=com_jombadger&view=issuer', $vName == 'issuer');
 		//JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_USERS'),
 								//'index.php?option=com_jombadger&view=users', $submenu == 'users');
-		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_CATEGORIES'),
+		JHTMLSidebar::addEntry(JText::_('COM_JOMBADGER_SUBMENU_CATEGORIES'),
 		                         'index.php?option=com_categories&view=categories&extension=com_jombadger',
-		                         $submenu == 'categories');
-		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_ISSUEDBADGES'),
+		                         $vName == 'categories');
+		JHTMLSidebar::addEntry(JText::_('COM_JOMBADGER_SUBMENU_ISSUEDBADGES'),
 		                         'index.php?option=com_jombadger&view=issued',
-		                         $submenu == 'issued');
-		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_ISSUER_ORGANIZATIONS'),
-								'index.php?option=com_jombadger&view=issuerorganizations', $submenu == 'issuerorganizations');
-		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_MYBADGE'),
+		                         $vName == 'issued');
+		JHTMLSidebar::addEntry(JText::_('COM_JOMBADGER_SUBMENU_ISSUER_ORGANIZATIONS'),
+								'index.php?option=com_jombadger&view=issuerorganizations', $vName == 'issuerorganizations');
+		JHTMLSidebar::addEntry(JText::_('COM_JOMBADGER_SUBMENU_MYBADGE'),
 		                         'index.php?option=com_jombadger&view=mybadge',
-		                         $submenu == 'mybadge');
-		JSubMenuHelper::addEntry(JText::_('COM_JOMBADGER_SUBMENU_EDITOR'),
+		                         $vName == 'mybadge');
+		JHTMLSidebar::addEntry(JText::_('COM_JOMBADGER_SUBMENU_EDITOR'),
 		                         'index.php?option=com_jombadger&view=editor',
-		                         $submenu == 'editor');
+		                         $vName == 'editor');
 		// set some global property
 		$document = JFactory::getDocument();
 		$document->addStyleDeclaration('.icon-48-jombadger ' .
 		                               '{background-image: url(../media/com_jombadger/images/icon48.png);}');
-		if ($submenu == 'categories') 
+		if ($vName == 'categories') 
 		{
-			$document->setTitle(JText::_('COM_JOMBADGER_ADMINISTRATION_CATEGORIES'));
+			JToolbarHelper::title(
+			JText::sprintf('COM_CATEGORIES_CATEGORIES_TITLE',JText::_('com_jombadger')),'jombadger-categories');
 		}
 	}
 	
