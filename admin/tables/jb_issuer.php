@@ -60,7 +60,7 @@ class Tablejb_issuer extends JTable
      * @return      boolean
      * @see JTable:load
      */
-    public function load($pk = null, $reset = true)
+    /*public function load($pk = null, $reset = true)
     {
     	if (parent::load($pk, $reset))
     	{
@@ -74,7 +74,7 @@ class Tablejb_issuer extends JTable
     	{
     		return false;
     	}
-    }
+    }*/
     
     /**
      * Method to compute the default name of the asset.
@@ -106,7 +106,7 @@ class Tablejb_issuer extends JTable
      *
      * @return      int
      */
-    protected function _getAssetParentId()
+    /*protected function _getAssetParentId()
     {
     	// We will retrieve the parent-asset from the Asset-table
     	$assetParent = JTable::getInstance('Asset');
@@ -131,6 +131,6 @@ class Tablejb_issuer extends JTable
     		$assetParentId=$assetParent->id;
     	}
     	return $assetParentId;
-    }    
+    } */   
     
 }

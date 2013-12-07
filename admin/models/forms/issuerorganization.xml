@@ -68,7 +68,7 @@
 			size="40"
 			maxlenght="150"
 			class="inputbox"
-			default=""
+			default="http://"
 			required="false"
 		/>
 		

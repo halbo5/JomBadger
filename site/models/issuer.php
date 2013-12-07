@@ -35,6 +35,12 @@ function getIssuerArray($db,$id_issuer)
 		$db->setQuery((string)$query);
 		$issuer = $db->loadObject();
 		
+		//supprime http:// de l'image s'il n'y a pas d'url
+		if ($issuer->issuer_image=="http://http://")
+			{
+				$issuer->issuer_image="";
+			}
+		
 		//create array for json
 		$json=array();
 		$json['name']=$issuer->issuer_name;

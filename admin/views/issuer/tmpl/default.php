@@ -28,9 +28,13 @@ JHtml::_('formbehavior.chosen', 'select');
     <fieldset>
         <div class="control-group">
       	<?php
-      	foreach($this->form->getFieldset() as $field): 
-        echo "<div class='control-label'>".$field->label."</div>";
-      	echo "<div class='controls'>".$field->input."</div>";
+      	foreach($this->form->getFieldset() as $field):
+      	?> 
+        <div class="control-group">
+      		<div class="control-label"><?php echo $field->label;?></div>
+      		<div class="controls"><?php	echo $field->input;?></div>
+      	</div>
+      	<?php 
 		endforeach;
 		?>
 		</div>
