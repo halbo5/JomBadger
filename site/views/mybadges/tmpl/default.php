@@ -8,24 +8,31 @@
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
 
+
+
 // No direct access
 
 defined('_JEXEC') or die('Restricted access');
+If ($this->userid<1)
+{
+	//Have to be connected to read the page
+	echo "<h2>".JText::_("COM_JOMBADGER_EARNBADGE_NOTCONNECTED")."</h2>";
+	return;
+}
 
 echo "<h2>".JText::_('COM_JOMBADGER_TITLE_LIST_BADGESVALIDATED')."</h2>";
 
 $nbv=count($this->badgesvalidated);
 if ($nbv!=0)
 	{
-	echo "<table class='jb_zebra'><thead>";
-	echo "<tr><td></td></tr>";
-	echo "</thead><tbody>";
-	
+	?>
+	<table class='jb_zebra'>
+	<tbody>
+	<?php 
 	foreach($this->badgesvalidated as $badge)
 	  	{
-	    	echo "<tr><td><img src='".$badge->image."' /></td>";
-	        echo "<td>".$badge->name."</td><td>".$badge->description."</td>";
-	        echo "<td><a href='".$badge->criteria_url."'>".JText::_('COM_JOMBADGER_BADGE_DETAILS')."</a></td>";
+	    	echo "<tr><td><img src='".$badge->image."' width='100px' /></td>";
+	        echo "<td><a href='".$badge->criteria_url."'>".$badge->name."</a></td><td>".$badge->description."</td>";
 	        echo "<td><a href='index.php?option=com_jombadger&view=earnbadge&badgeid=".$badge->id_badge."'>".JText::_('COM_JOMBADGER_MYBADGES_GENERATE')."</a></td>";
 	       echo "</tr>";
 	      }
@@ -39,9 +46,10 @@ echo "<h2>".JText::_('COM_JOMBADGER_TITLE_LIST_BADGESISSUED')."</h2>";
 $nbi=count($this->badgesissued);
 if ($nbi!=0)
 	{
-	echo "<table class='jb_zebra'><thead>";
-	echo "<tr><td></td></tr>";
-	echo "</thead><tbody>";
+	?>
+	<table class='jb_zebra'>
+	<tbody>
+	<?php 
 	foreach($this->badgesissued as $badge)
 	  	{
 	  		if ($badge->badgeissuedon)
@@ -53,9 +61,8 @@ if ($nbi!=0)
 	  			$heure="";
 	  		}
 	  		
-	  		echo "<tr><td><img src='".$badge->image."' /></td>";
-	        echo "<td>".$badge->name."</td><td>".$badge->description."</td>";
-	        echo "<td><a href='".$badge->criteria_url."'>".JText::_('COM_JOMBADGER_BADGE_DETAILS')."</a></td>";
+	  		echo "<tr><td><img src='".$badge->image."' width='100px' /></td>";
+	        echo "<td><a href='".$badge->criteria_url."'>".$badge->name."</a></td><td>".$badge->description."</td>";
 	        echo "<td>Le ".$date." à ".$heure."</td>";
 	        if ($badge->transfered==1)
 	        	{
