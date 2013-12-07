@@ -12,10 +12,10 @@ div.jb_centrer {
 }
 
 .backPackLink {
-	color: #FF0099;
-	text-decoration: none;
-	font-weight: bold;
-	cursor: pointer;
+	/color: #FF0099;
+	/text-decoration: none;
+	/font-weight: bold;
+	/cursor: pointer;
 }
 
 #badge-error {
@@ -46,5 +46,10 @@ ul.jb_zebra > li:nth-of-type(odd),
 table.jb_zebra tbody tr:nth-of-type(odd) { background: #F5F6F7; }
 
 table.jb_zebra caption { color: #999; }
+
+.titre-earnbadge {
+	height:150px;
+	line-height:150px;
+}
 
 	

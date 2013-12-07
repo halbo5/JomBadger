@@ -18,6 +18,8 @@ $id_record=$this->id_record;
 $badgeRecipientEmail=$this->badgeRecipientEmail;
 $badgeRecipientName=$this->badgeRecipientName;
 $badgeid=$this->badgeid;
+$image=$this->image;
+$badgename=$this->badgename;
 $submit=$this->submit;
 
 If ($userid<1 && $badgeRecipientEmail=='')
@@ -126,34 +128,95 @@ function showLoader(status){
 if ($validated=="" && $id_record=="" )
 	{
 		//no validated action to receive a badge
-		echo "<p>".JTEXT::_('COM_JOMBADGER_TEXT_NOTVALIDATED')."</p>";
-		echo "<p>".JTEXT::_("COM_JOMBADGER_TEXT_KNOWMORE")." :</p>";
-		echo "<p><a href='".$criteria_url."'>".JText::_('COM_JOMBADGER_GOTOCRITERIA')."</a></p>";
+		?>
+		<div class="row">
+			<div class="span1"></div>
+			<div class="span3"><img src="<?php echo $image; ?>" alt="<?php echo $badgename;?>" title="<?php echo $badgename;?>" width="150px"></div>
+			<div class="span7">
+				<h3><?php echo JText::_( 'COM_JOMBADGER_TEXT_NOTVALIDATED' );?></h3>
+				<p><?php echo JTEXT::_("COM_JOMBADGER_TEXT_KNOWMORE");?></p>
+				<p><a href="<?php  echo $criteria_url;?>"><?php echo JText::_('COM_JOMBADGER_GOTOCRITERIA');?></a></p>
+			</div>
+			<div class="span1"></div>
+		</div>
+	<?php  
 	}
-else {
+else if ($submit=="") {
 		//action to receive badge validated, we can continue
 
 				//badge has been created for earner
-				echo "<h3>".JText::_( 'COM_JOMBADGER_BADGE_STORE_OK' )."</h3>";
-				echo "<p>".JText::_('COM_JOMBADGER_BADGE_SENDTO_BACKPACK').".</p>";
-				
 				$link=JURI::base()."index.php?option=com_jombadger&view=earnbadge";
-				echo "<form action='".$link."' method='post'>";
-				echo "<p>".JText::_('COM_JOMBADGER_EARNBADGE_NAME')." : <input type='text' name='name' value='".$badgeRecipientName."' />".JText::_('COM_JOMBADGER_EARNBADGE_EMAIL')." :<input type='text' name='email' value='".$badgeRecipientEmail."' />";
-				echo "<input type='hidden' name='badgeid' value='".$badgeid."' />";
-				echo "<input type='hidden' name='id_record' value='".$id_record."' />";
-				echo "<input type='hidden' name='store' value='".$store."' />";
-				echo "<input type='hidden' name='validated' value='1' />";
-				echo "<input type='submit' name='submit' value='".JText::_('COM_JOMBADGER_EARNBADGE_MODIFIER')."' />.</p>";
-				echo "</form>";
+				?>
+				<div class="row">
+					<div class="span1"></div>
+					<div class="span3"><img src="<?php echo $image; ?>" alt="<?php echo $badgename;?>" title="<?php echo $badgename;?>" width="150px"></div>
+					<div class="span7"><h3 class="titre-earnbadge"><?php echo JText::_( 'COM_JOMBADGER_BADGE_OK' );?></h3></div>
+					<div class="span1"></div>
+				</div> 
+				<div class="row">
+					<div class="span1"></div>
+					<div class="span10"><p><?php echo JText::_('COM_JOMBADGER_BADGE_SENDTO_BACKPACK');?></p></div>
+					<div class="span1"></div>
+				</div>
+				<div class="row">
+					<div class="span1"></div>
+					<div class="span10">
+						<form action="<?php echo $link;?>" method='post' class='form-inline'>
+							<fieldset>
+								<label for='name'><?php echo JText::_('COM_JOMBADGER_EARNBADGE_NAME'); ?></label>
+								<input type='text' name='name' id='name' value='<?php echo $badgeRecipientName;?>' />
+								<label for="email"><?php echo JText::_('COM_JOMBADGER_EARNBADGE_EMAIL');?></label>
+								<input type='text' name='email' id='email' value='<?php echo $badgeRecipientEmail;?>' />
+								<input type='hidden' name='badgeid' value='<?php echo $badgeid;?>' />
+								<input type='hidden' name='id_record' value='<?php echo $id_record;?>' />
+								<input type='hidden' name='store' value='<?php echo $store;?>' />
+								<input type='hidden' name='validated' value='1' />
+								<input type='submit' name='submit' class='btn btn-primary' value="<?php echo JText::_('COM_JOMBADGER_EARNBADGE_MODIFIER');?>" />
+							</fieldset>
+						</form>
+					</div>
+					<div class="span1"></div>
+				</div>
+				<?php 		
+	}
+else {//badge created
+?>
+		<div class="row">
+			<div class="span1"></div>
+			<div class="span3"><img src="<?php echo $image; ?>" alt="<?php echo $badgename;?>" title="<?php echo $badgename;?>" width="150px"></div>
+			<div class="span7">
+				<h3 class="titre-earnbadge"><?php echo JText::_( 'COM_JOMBADGER_BADGE_STORE_OK' );?></h3>
+			</div>
+			<div class="span1"></div>
+		</div>
+		<?php 
 				if ($submit!="" && $store!="")
 					{
-					echo "<div class='backPackLink'>".JText::_('COM_JOMBADGER_CONTINUE')."</div>";
-					//echo "<p><a href=''>".JText::_('COM_JOMBADGER_CONTINUE')."</a></p>";
 					?>
-					<div id="badge-error"><?php echo JText::_('COM_JOMBADGER_TRANSFER_ERROR');?></div>
-					<div id="errMsg"></div>
-					<div id="badgeSuccess"><?php echo JText::_('COM_JOMBADGER_TRANSFER_SUCCESS');?></div>
+					<div class="row">
+						<div class="span1"></div>
+						<div class="span10">
+							<p><?php echo JTEXT::_("COM_JOMBADGER_BADGE_TRANSFER");?></p>
+							<a class='btn btn-success backPackLink'><i class="icon-chevron-right"></i><?php echo JText::_('COM_JOMBADGER_CONTINUE');?></a>
+						</div>
+						<div class="span1"></div>
+					</div>
+					<div class="row">
+						<div class="span1"></div>
+						<div class="span10">
+							<div id="badge-error" class="alert alert-error">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>Warning !</strong>
+							<?php echo JText::_('COM_JOMBADGER_TRANSFER_ERROR');?>
+							</div>
+							<div id="errMsg"></div>
+							<div id="badgeSuccess" class="alert alert-success">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>Yeah !</strong>
+							<?php echo JText::_('COM_JOMBADGER_TRANSFER_SUCCESS');?></div>
+						</div>
+						<div class="span1"></div>
+					</div>
 					<?php
 					}
 				elseif ($submit!="" && $store=="") {
@@ -164,9 +227,15 @@ else {
 				if ($this->appid!="")
 					{
 					?>
-				<p><a class="jb_facebook" onclick='showStream(); return false;'><?php echo JText::_('COM_JOMBADGER_POSTTOFEED');?></a></p>
-    			<p id='msg'></p>
-    			<p id='loader'><?php //echo JText::_('COM_JOMBADGER_FACEBOOKONSCREEN');?></p>
+				<div class="row">
+					<div class="span1"></div>
+					<div class="span10">
+						<p><a class="jb_facebook" onclick='showStream(); return false;'><?php echo JText::_('COM_JOMBADGER_POSTTOFEED');?></a></p>
+		    			<p id='msg'></p>
+		    			<p id='loader'><?php //echo JText::_('COM_JOMBADGER_FACEBOOKONSCREEN');?></p>
+    				</div>
+    				<div class="span1"></div>
+    			</div>
 
    				<!-- <script> 
    				
@@ -179,6 +248,6 @@ else {
 			      }
 			    
 			    </script>-->
-			<?php }//end facebook button		
-	}
- ?>
+			<?php }//end facebook button
+}
+?>

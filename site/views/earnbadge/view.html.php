@@ -66,7 +66,7 @@ class JomBadgerViewearnbadge extends JViewLegacy
 		//insert javascript facebook plugin for jquery
 		$jq=$model->jqFBplugin($this->langtag);
 		$document->addScriptDeclaration($jq);
-		//add last version of jquery
+		//add latest version of jquery
 		$document->addScript("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js");    
         
 		//we look for badge's datas
@@ -128,7 +128,7 @@ class JomBadgerViewearnbadge extends JViewLegacy
 					{//if function does not return value, record does not exist
 					$store=$model->storeBadge($record);
 					}
-				else {
+				else {//record already exist
 					$id_record=($id_record!="")?$id_record:$verif;
 					$store=1;//we affect something to $store so badge is considered valid in default.php
 				}
@@ -147,8 +147,6 @@ class JomBadgerViewearnbadge extends JViewLegacy
 	
 		
 			}
-	
-		
 		
 		$this->assignRef( 'verif', $verif );
 		$this->assignRef( 'validated', $validated );
@@ -159,6 +157,8 @@ class JomBadgerViewearnbadge extends JViewLegacy
 		$this->assignRef( 'badgeRecipientName', $badgeRecipientName );
 		$this->assignRef( 'badgeid', $this->badge->id_badge );
 		$this->assignRef( 'criteria_url', $this->badge->criteria_url );
+		$this->assignRef( 'image',$this->badge->image);
+		$this->assignRef( 'badgename',$this->badge->name);
 		$this->assignRef( 'submit', $submit );
 		
 		parent::display($tpl);

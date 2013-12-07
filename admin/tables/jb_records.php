@@ -107,7 +107,7 @@ class Tablejb_records extends JTable
      *
      * @return      int
      */
-    protected function _getAssetParentId()
+   /* protected function _getAssetParentId()
     {
     	// We will retrieve the parent-asset from the Asset-table
     	$assetParent = JTable::getInstance('Asset');
@@ -132,6 +132,6 @@ class Tablejb_records extends JTable
     		$assetParentId=$assetParent->id;
     	}
     	return $assetParentId;
-    }    
+    }*/    
     
 }
