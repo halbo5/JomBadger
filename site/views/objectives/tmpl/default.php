@@ -27,7 +27,7 @@ If ($userid<1)
 <div class="span3"><?php //TODO ajouter une image pour faire joli ! ?></div>
 			<div class="span7">
 				<h3><?php echo JText::_( 'COM_JOMBADGER_OBJECTIVES_TITLE' );?></h3>
-				<p><?php echo JTEXT::_("COM_JOMBADGER_OBJECTIVES_DESCRIPTION");?></p>
+				<p><?php echo JTEXT::_("COM_JOMBADGER_OBJECTIVES_DESCRIPTION");?> test </p>
 			</div>
 			<div class="span1"></div>
 		</div>
