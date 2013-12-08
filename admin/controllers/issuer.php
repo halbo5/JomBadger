@@ -40,12 +40,21 @@ class JomBadgerControllerissuer extends JControllerForm
     	$issuerorg=$params->get('issuerorg');
     	$issuercontact=$params->get('issuercontact');
 	    $sendername=($issuerorg!="")?$issuerorg:$issuername;
-	    $sendername=($sendername!="")?$sendername:$config->getValue('config.fromname');
-	    $sendermail=($issuercontact!="")?$issuercontact:$config->getValue('config.mailfrom');
+	    $sendername=($sendername!="")?$sendername:$config->get('config.fromname');
+	    $sendermail=($issuercontact!="")?$issuercontact:$config->get('config.mailfrom');
 	    $sender = array($sendermail,$sendername);
 	    $subject=JText::_('COM_JOMBADGER_ISSUER_EMAILSUBJECT');
 	    $path=JURI::root();
 	    $url=$path."index.php?option=com_jombadger&view=earnbadge&badgeid=".$data['badgeid']."&email=".$data['usermail'];
+	    //save validation
+	    //API JomBadger
+	    $api_OBJ = JPATH_SITE.'/components/com_jombadger/helper.php';
+	    if ( file_exists($api_OBJ))
+	    {
+	    	require_once ($api_OBJ);
+	    	JomBadgerHelper::validate($data['usermail'],$data['badgeid']);
+	    }
+	    //fin API JomBadger
 	        	
 	    //create mail body message
 	    $message="<p>".JTEXT::_("COM_JOMBADGER_ISSUER_HELLO").",</p>";

@@ -1,4 +1,17 @@
 --
+-- Structure de la table `#__jb_articles`
+--
+
+CREATE TABLE IF NOT EXISTS `#__jb_articles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `component` varchar(50) NOT NULL,
+  `articleid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+--
 -- Structure de la table `#__jb_badges`
 --
 
@@ -39,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `#__jb_issuer` (
 
 CREATE TABLE IF NOT EXISTS `#__jb_records` (
   `id_record` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0',
   `uid` varchar(13) NOT NULL,
   `evidence` varchar(200) NOT NULL COMMENT 'url that can prove badge is earned',

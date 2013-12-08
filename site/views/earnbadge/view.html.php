@@ -84,6 +84,7 @@ class JomBadgerViewearnbadge extends JViewLegacy
 		$salt=$model->rand_string(8);
 		$hashed_email = hash('sha256', $badgeRecipientEmail  . $salt);
 		$record=array();
+		$record['userid']=$userid;
 		$record['uid']=uniqid();
 		$record['identity']="sha256$".$hashed_email;
 		$record['identity_type']="email";

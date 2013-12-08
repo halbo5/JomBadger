@@ -17,7 +17,7 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_jombadger'))
 }
 
 // require helper file
-JLoader::register('JomBadgerHelper', dirname(__FILE__) . '/helpers/openbadges.php');
+JLoader::register('JomBadgerHelper', dirname(__FILE__) . '/helpers/jombadger.php');
 
 // import joomla controller library
 jimport('joomla.application.component.controller');
