@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+        <layout title="COM_JOMBADGER_OBJECTIVES">
+                <message>COM_JOMBADGER_OBJECTIVES_DESC</message>
+        </layout>
+        <fields name="request"
+        		addfieldpath="/administrator/components/com_jombadger/models/fields"
+        >
+     <fieldset name="request" label="COM_JOMBADGER_GOALS_CONFIG" description="COM_JOMBADGER_DESC_GOALS_CONFIG">
+         <field type="openbadges" name="articlesbadge" label="COM_JOMBADGER_ARTICLES_BADGEID" description="COM_JOMBADGER_ARTICLES_BADGEID_DESC" />                	
+	</fieldset>
+	</fields>
+</metadata>
