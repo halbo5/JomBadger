@@ -66,8 +66,8 @@ class JomBadgerViewearnbadge extends JViewLegacy
 		//insert javascript facebook plugin for jquery
 		$jq=$model->jqFBplugin($this->langtag);
 		$document->addScriptDeclaration($jq);
-		//add latest version of jquery
-		$document->addScript("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js");    
+		//add jquery
+		$document->addScript("coomponents/com_jombadger/jquery.min.js");    
         
 		//we look for badge's datas
 		$this->badge = ($this->get('badge'))?$this->get('badge'):"";
@@ -93,19 +93,9 @@ class JomBadgerViewearnbadge extends JViewLegacy
 		$record['evidence']=$evidence;
 		$record['earnername']=$badgeRecipientName;
 		$record['badgeid']=$this->badge->id_badge;
-		//$record['badgeversion']=$params->get('version');
-		//$record['badgename']=$this->badge->name;
-		//$record['badgeimage']=$this->badge->image;
-		//$record['badgedescription']=$this->badge->description;
-		//$record['badgecriteria']=$this->badge->criteria_url;
 		$record['badgeexpires']=$this->badge->expires;
 		$record['badgeissuedon']=$date;
-		//$record['badgeissuerorigin']=$params->get('issuerurl');
-		//$record['badgeissuername']=$params->get('issuername');
-		//$record['badgeissuerorg']=$params->get('issuerorg');
-		//$record['badgeissuercontact']=$params->get('issuercontact');
 		$record['verify_type']="hosted";//TODO : could also be signed
-		//$record['verify_url']="";
 		}
 							
 		//test if badge is validated for current user or user given in url
@@ -115,7 +105,6 @@ class JomBadgerViewearnbadge extends JViewLegacy
 				{
 				$validated = $model->getValidated($db,$badgeRecipientEmail,$id_record);
 				}
-			//else {$validated=0;}
 			}
 		if ($validated>0 && $submit!='')
 			{

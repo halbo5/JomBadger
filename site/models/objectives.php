@@ -58,6 +58,21 @@ function getGoalId()
 		$articlesbadge = $input->getInt('articlesbadge');
 		return $articlesbadge;
 	}
+
+public function verifRecord($db,$userid,$badgeid)
+	{
+		//test if record already exists for this badge and user
+		
+		$query = $db->getQuery(true);
+		$query->select('id_record');
+		$query->from('#__jb_records');
+		$query->where('userid=\''.$userid.'\'');
+		$query->where('badgeid='.$badgeid);
+		$db->setQuery((string)$query);
+		$db->execute();
+		$num_rows=$db->getNumRows();
+		return $num_rows;
+	}
 	
 
 }

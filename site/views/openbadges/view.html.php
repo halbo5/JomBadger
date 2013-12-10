@@ -26,15 +26,6 @@ class JomBadgerViewopenbadges extends JViewLegacy
 		
 		$document = JFactory::getDocument();
 		$document->addStyleSheet('components/com_jombadger/openbadges.css');
-     
-        		
-		//$path=JURI::base();
-		//$app=&JFactory::getApplication('site');
-        //$params = &$app->getParams('com_muzeededi');	
-		//$titre_page=$params->get('titre_page');
-		
-		
-		//var_dump($results);exit;
 		
 		$this->badges=$model->getBadges();
 		$this->categories=$model->getCategories();

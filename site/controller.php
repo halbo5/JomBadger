@@ -19,7 +19,8 @@ class JomBadgerController extends JControllerLegacy
 	
 	function ajax_transfer_backpack()
 	 {
-		$input = JFactory::getApplication()->input;
+		//when badge transfered into mozillas backpack, we add this info in the database
+	 	$input = JFactory::getApplication()->input;
 		$id_record = $input->get('id_record', '', 'post');
 	 	
 	 	$db	   =& JFactory::getDBO();

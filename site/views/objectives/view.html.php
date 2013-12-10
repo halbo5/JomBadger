@@ -38,38 +38,60 @@ class JomBadgerViewobjectives extends JViewLegacy
 		$this->numberarticles=$params->get('numberarticles');
 		$this->articlesbadge=$model->getGoalId();
 		
-		$userid = $model->getUserId();
-		
 		$date = date('Y-m-d');
 		$lang =& JFactory::getLanguage();
 		$this->langtag=$lang->getTag();
 		$this->langtag=str_replace("-","_",$this->langtag);
-        
-        //adding some css and javascript
-        $document = JFactory::getDocument();
+		
+		//adding some css and javascript
+		$document = JFactory::getDocument();
 		$document->addStyleSheet('components/com_jombadger/openbadges.css');
 		
 		//add latest version of jquery
-		//$document->addScript("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js");    
-        
+		//$document->addScript("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js");
 		
-		
-		
-			
-		//test if counting articles objective is activated
-		if ($this->countarticles==1)
+		$userid = $model->getUserId();
+		if ($userid>0)
 			{
-				$num_articles = $model->getUserArticlesCount($db,$userid);
-				
-				
-				
-				}
+				$user =& JFactory::getUser();
+						
+				//test if counting articles objective is activated
+				if ($this->countarticles==1)
+					{
+						$num_articles = $model->getUserArticlesCount($db,$userid);//number of articles read
+						$record_exist = $model->verifRecord($db,$userid,$this->articlesbadge);
+						if ($record_exist==0)
+							{
+								//verify if goal achieved
+								if ($num_articles>=$this->numberarticles)
+									{
+										//goal achieved
+										//API JomBadger
+										$api_OBJ = JPATH_SITE.'/components/com_jombadger/helper.php';
+										if ( file_exists($api_OBJ))
+										{
+											require_once ($api_OBJ);
+											JomBadgerHelper::validate($user->email,$this->articlesbadge);
+										}
+										//fin API JomBadger
+										$message=1;//goal reached
+									}
+								else {
+									$message=0;//goal not reached
+								}
+							}
+						else {
+							$message=2;//badge already won
+						}
+					}
+			}
 		
 		$this->assignRef( 'userid', $userid );
 		$this->assignRef( 'num_articles', $num_articles);
 		$this->assignRef( 'count_articles', $this->countarticles);
 		$this->assignRef( 'number_articles', $this->numberarticles);
 		$this->assignRef( 'articlesbadge', $this->articlesbadge);
+		$this->assignRef( 'message', $message);
 		
 		parent::display($tpl);
 	}
