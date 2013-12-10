@@ -66,8 +66,8 @@ class JomBadgerViewearnbadge extends JViewLegacy
 		//insert javascript facebook plugin for jquery
 		$jq=$model->jqFBplugin($this->langtag);
 		$document->addScriptDeclaration($jq);
-		//add jquery
-		$document->addScript("coomponents/com_jombadger/jquery.min.js");    
+		//no need to add jquery, already in joomla
+		//$document->addScript("components/com_jombadger/jquery.min.js");    
         
 		//we look for badge's datas
 		$this->badge = ($this->get('badge'))?$this->get('badge'):"";
