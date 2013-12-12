@@ -32,6 +32,7 @@ function getBadges()
 		$query = $db->getQuery(true);
 		$query->select('id_badge,#__jb_badges.name as name, #__jb_badges.image as image, #__jb_badges.description as description, criteria_url,expires, catid');
 		$query->from('#__jb_badges');
+		$query->where('state=1');
 		$query->leftjoin('#__categories on catid=#__categories.id');
 		$query->order('name');
 		$db->setQuery((string)$query);

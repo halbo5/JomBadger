@@ -67,7 +67,12 @@ protected function addToolBar()
     	{
     		JToolBarHelper::editList('badge.edit');
     	}
-    	    	if ($this->canDo->get('core.admin'))
+    	if ($this->canDo->get('core.edit.state')) {
+    	
+    		JToolbarHelper::publish('openbadges.publish', 'JTOOLBAR_PUBLISH', true);
+    		JToolbarHelper::unpublish('openbadges.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+    	}
+    	if ($this->canDo->get('core.admin'))
     	{
     		JToolBarHelper::divider();
     		JToolBarHelper::preferences( 'com_jombadger','500','600' );

@@ -14,6 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 <th width="1%" class="hidden-phone">
     <?php echo JHtml::_('grid.checkall'); ?>
 </th>
+<th><?php echo JTEXT::_("COM_JOMBADGER_STATUT");?>
 <th width="20">Id</th><th><?php echo JTEXT::_("COM_JOMBADGER_BADGEIMAGE");?></th><th><?php echo JTEXT::_("COM_JOMBADGER_BADGENAME"); ?></th>
 <th><?php echo JTEXT::_("COM_JOMBADGER_BADGECATEGORY"); ?></th>
 <th><?php echo JTEXT::_("COM_JOMBADGER_BADGEDESCRIPTION"); ?></th>

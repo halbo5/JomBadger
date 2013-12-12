@@ -22,7 +22,7 @@
 		<field
 			name="badgeid"
 			type="sql"
-			query="SELECT id_badge as value,name as badgeid FROM #__jb_badges"
+			query="SELECT id_badge as value,name as badgeid FROM #__jb_badges WHERE state=1"
 			label="COM_JOMBADGER_ISSUER_BADGE"
 			description="COM_JOMBADGER_ISSUER_BADGE_DESC"
 			default="0"

@@ -37,6 +37,7 @@ class JFormFieldJomBadger extends JFormFieldList
 		$query->select('id_badge,#__jb_badges.name as name,#__categories.title as category,catid');
 		$query->from('#__jb_badges');
 		$query->leftJoin('#__categories on catid=#__categories.id');
+		$query->where('state=1');
 		$db->setQuery((string)$query);
 		$badges = $db->loadObjectList();
 		$options = array();

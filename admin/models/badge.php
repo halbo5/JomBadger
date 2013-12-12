@@ -36,6 +36,26 @@ public function getForm($data = array(), $loadData = true)
 		{
 			return false;
 		}
+		
+		// Modify the form based on access controls.
+		if (!$this->canEditState((object) $data))
+		{
+			// Disable fields for display.
+			//$form->setFieldAttribute('ordering', 'disabled', 'true');
+			$form->setFieldAttribute('state', 'disabled', 'true');
+			//$form->setFieldAttribute('publish_up', 'disabled', 'true');
+			//$form->setFieldAttribute('publish_down', 'disabled', 'true');
+		
+			// Disable fields while saving.
+			// The controller has already verified this is a record you can edit.
+			//$form->setFieldAttribute('ordering', 'filter', 'unset');
+			$form->setFieldAttribute('state', 'filter', 'unset');
+			//$form->setFieldAttribute('publish_up', 'filter', 'unset');
+			//$form->setFieldAttribute('publish_down', 'filter', 'unset');
+		}
+		
+		
+		
 		return $form;
 	}
 
@@ -59,6 +79,7 @@ protected function loadFormData()
 		}
 		return $data;
 	}
+	
 	
 function getUserId()
 	{

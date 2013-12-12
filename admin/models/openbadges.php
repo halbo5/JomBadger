@@ -30,7 +30,7 @@ function getListQuery()
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('id_badge,#__jb_badges.name as name, #__jb_badges.image as image, #__jb_badges.description as description, criteria_url,expires, catid, #__categories.title as catname');
+		$query->select('id_badge,#__jb_badges.state as state,state,#__jb_badges.name as name, #__jb_badges.image as image, #__jb_badges.description as description, criteria_url,expires, catid, #__categories.title as catname');
 		$query->from('#__jb_badges');
 		$query->leftjoin('#__categories on catid=#__categories.id');
 		$query->order('name');

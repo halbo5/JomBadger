@@ -7,6 +7,7 @@
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  ******/
 defined('_JEXEC') or die('Restricted access');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
@@ -56,4 +57,8 @@ JHtml::_('formbehavior.chosen', 'select');
 <input type="hidden" name="task" value="badge.cancel" />
 <?php echo JHtml::_('form.token'); ?>
 </div>  </div></div>
+<!-- Begin Sidebar -->
+
+			<?php //echo JLayoutHelper::render('joomla.edit.details', $this); ?>
+		<!-- End Sidebar -->
 </form>

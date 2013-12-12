@@ -22,6 +22,7 @@ class JomBadgerViewbadge extends JViewLegacy
 	protected $item;
 	protected $script;
 	protected $canDo;
+	protected $state;
 	
 	function display($tpl = null)
 {
@@ -35,6 +36,7 @@ class JomBadgerViewbadge extends JViewLegacy
     $this->form=$form;
     $this->item=$item;
     $this->script = $script;
+    $this->state=$this->get('State');
     
     // What Access Rights does this user have? What can (s)he do?
 	$this->canDo = JomBadgerHelper::getActions($this->item->id_badge);
